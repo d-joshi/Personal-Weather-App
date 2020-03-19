@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TheWeatherApp</string>
+    <string name="current_date">Date</string>
+    <string name="current_time">Current time</string>
 </resources>

@@ -16,6 +16,8 @@ public abstract class UserRoomdb extends RoomDatabase {
 
     public interface UserListener {
         void onUserReturned(User user);
+
+        void onUserReturned();
     }
 
     public abstract UserDAO userDAO(); // Singleton Pattern
@@ -48,7 +50,7 @@ public abstract class UserRoomdb extends RoomDatabase {
         insert(new User(0, "John Doe", "F", "brief", new ArrayList<Double>(5)));
     }
 
-    public static void getUser(int id, UserListener listener){
+    public static void getUser(int id, final UserListener listener){
         new AsyncTask<Integer, Void, User>(){
             protected User doInBackground(Integer... ids){
                 return INSTANCE.userDAO().getById(ids[0]);
