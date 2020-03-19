@@ -8,26 +8,84 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import java.util.ArrayList;
+
 
 @Database( entities = {User.class}, version = 1, exportSchema = false)
 public abstract class UserRoomdb extends RoomDatabase {
 
     public interface UserListener {
-        void onUserreturn(User user);
-
+        void onUserReturned(User user);
     }
 
-    public abstract UserDao userDao(); // Singleton Pattern
+    public abstract UserDAO userDAO(); // Singleton Pattern
 
-    {
-    }}}
+    private static UserRoomdb INSTANCE;
 
+    public static synchronized UserRoomdb getDatabase(final Context context){
+        if(INSTANCE == null){
+            synchronized (UserRoomdb.class){
+                if(INSTANCE == null){
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
+                    UserRoomdb.class, "User_databse")
+                    .addCallback(createUserDatabaseCallback)
+                    .build();
+                }
+            }
+        }
+        return INSTANCE;
+    }
 
-    public static void insert (User user) {
-    new AsyncTask <user, void, void>() {
-        protected void doInBackground(User... user) {
-            INSTANCE.userDao.insert(user);
+    private static RoomDatabase.Callback createUserDatabaseCallback = new RoomDatabase.Callback() {
+        @Override
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+            super.onCreate(db);
+            createUserTable();
+        }
+    };
+
+    private static void createUserTable(){
+        insert(new User(0, "John Doe", "F", "brief", new ArrayList<Double>(5)));
+    }
+
+    public static void getUser(int id, UserListener listener){
+        new AsyncTask<Integer, Void, User>(){
+            protected User doInBackground(Integer... ids){
+                return INSTANCE.userDAO().getById(ids[0]);
+            }
+
+            protected void onPostExecute(User user){
+                super.onPostExecute(user);
+                listener.onUserReturned();
+            }
+        }.execute(id);
+    }
+
+    public static void insert(User user) {
+        new AsyncTask<User, Void, Void> () {
+            protected Void doInBackground(User... users) {
+                INSTANCE.userDAO().insert(users);
+                return null;
+            }
         }.execute(user);
-
-
     }
+
+    public static void delete(int userId) {
+        new AsyncTask<Integer, Void, Void> () {
+            protected Void doInBackground(Integer... ids) {
+                INSTANCE.userDAO().delete(ids[0]);
+                return null;
+            }
+        }.execute(userId);
+    }
+
+
+    public static void update(User user) {
+        new AsyncTask<User, Void, Void> () {
+            protected Void doInBackground(User... users) {
+                INSTANCE.userDAO().update(users);
+                return null;
+            }
+        }.execute(user);
+    }
+}
