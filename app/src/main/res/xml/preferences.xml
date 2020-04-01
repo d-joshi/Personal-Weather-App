@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:key="@string/pref_sync"
+        android:title="@string/pref_sync"
+        android:summary="@string/pref_sync_summ"
+        android:defaultValue="true" />
+
+    <ListPreference
+
+        android:dependency="@string/pref_sync"
+        android:key="@string/pref_syncConnectionType"
+        android:title="@string/pref_syncConnectionType"
+        android:dialogTitle="@string/pref_syncConnectionType"
+        android:entries="@array/pref_syncConnectionTypes_entries"
+        android:entryValues="@array/pref_syncConnectionTypes_values"
+        android:defaultValue="@string/pref_syncConnectionTypes_default"/>
+
+    <EditTextPreference
+
+        android:key="@string/pref_quote_key"
+        android:title="@string/pref_quote_title"
+        android:summary="@string/pref_quote_summary"
+        android:defaultValue="@string/pref_quote_default">
+
+    </EditTextPreference>
+
+    <PreferenceScreen
+
+         android:key="button_voicemail_category_key"
+         android:title="@string/voicemail"
+         android:persistent="false">
+    <ListPreference
+
+        android:key="button_voicemail_provider_key"
+        android:title="@string/voicemail_provider"/>
+    <PreferenceScreen
+
+        android:key="button_voicemail_setup_key"
+        android:title="@string/voicemail_setup"
+        android:persistent="false">
+    </PreferenceScreen>
+
+</PreferenceScreen>
+
+</PreferenceScreen>

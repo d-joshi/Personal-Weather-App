@@ -47,7 +47,7 @@ public abstract class UserRoomdb extends RoomDatabase {
     };
 
     private static void createUserTable(){
-        insert(new User(0, "John Doe", "F", "brief", new ArrayList<Double>(5)));
+        insert(new User(0, "John Doe", "F", "brief", "5"));
     }
 
     public static void getUser(int id, final UserListener listener){

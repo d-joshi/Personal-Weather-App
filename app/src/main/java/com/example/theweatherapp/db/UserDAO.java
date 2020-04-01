@@ -14,7 +14,7 @@ public interface UserDAO {
     @Query("SELECT * FROM users ORDER BY rowid")
     LiveData<List<User>> getAll();
 
-    @Query("SELECT * FROM users WHERE rowid = :userid")
+    @Query("SELECT * FROM users WHERE rowid = :userId")
     User getById(int userId);
 
     @Insert

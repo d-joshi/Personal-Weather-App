@@ -9,7 +9,7 @@ import java.util.ArrayList;
 @Entity(tableName="users")
 public class User {
 
-    public User(int id, String name, String unitsPref, String verbosityPref, ArrayList<Double> tempPref) {
+    public User(int id, String name, String unitsPref, String verbosityPref, String tempPref) {
         this.id = id;
         this.name = name;
         this.unitsPref = unitsPref;
@@ -31,5 +31,5 @@ public class User {
     public String verbosityPref;
 
     @ColumnInfo(name = "tempPref")
-    public ArrayList<Double> tempPref;
+    public String tempPref;
 }
