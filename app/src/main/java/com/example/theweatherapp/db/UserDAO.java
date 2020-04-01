@@ -26,6 +26,6 @@ public interface UserDAO {
     @Delete
     void delete(User... user);
 
-    @Query("DELETE FROM users WHERE rowid = :userid")
-    void delete(int userid);
+    @Query("DELETE FROM users WHERE rowid = :userId")
+    void delete(int userId);
 }

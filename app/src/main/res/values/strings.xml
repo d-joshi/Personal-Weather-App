@@ -2,4 +2,9 @@
     <string name="app_name">TheWeatherApp</string>
     <string name="current_date">Date</string>
     <string name="current_time">Current time</string>
+    <string name="settings">Settings</string>
+    <string name="units">Temperature Unit:</string>
+    <string name="fahrenheit">Fahrenheit</string>
+    <string name="celsius">Celsius</string>
+    <string name="verbosity">How long do you want your personal message?</string>
 </resources>
