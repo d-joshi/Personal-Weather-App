@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:text="@string/settings"
-        android:textSize="40dp"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/units"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.169"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,37 +71,49 @@
 
     <Spinner
         android:id="@+id/verbosity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="271dp"
-        tools:layout_editor_absoluteY="389dp" />
+        android:layout_width="121dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/verbosityText"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/lowTemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="328dp"
-        tools:layout_editor_absoluteY="444dp" />
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/verbosity"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/midTemp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="172dp"
-        tools:layout_editor_absoluteY="354dp" />
+        android:layout_width="21dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/verbosityText" />
 
     <EditText
         android:id="@+id/highTemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="238dp"
-        tools:layout_editor_absoluteY="399dp" />
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="148dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/verbosityText" />
 
     <Button
         android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="126dp"
-        tools:layout_editor_absoluteY="504dp" />
+        android:layout_marginStart="84dp"
+        android:layout_marginBottom="136dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
