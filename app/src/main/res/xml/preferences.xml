@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <ListPreference
-        android:/>
 
+android:title="@string/app_name"
+android:icon="@drawable/ic_cloud_circle_black_24dp"/>
 
-    <CheckBoxPreference
-        android:key="@string/pref_sync"
-        android:title="@string/pref_sync"
-        android:summary="@string/pref_sync_summ"
-        android:defaultValue="true" />
+    <ListPreference
+        android:key="@string/pref_temperature"
+        android:title="@string/pref_temperature"
+        android:summary="@string/pref_units"
+        android:defaultValue="false" />
 
     <ListPreference
 
-        android:dependency="@string/pref_sync"
-        android:key="@string/pref_syncConnectionType"
-        android:title="@string/pref_syncConnectionType"
-        android:dialogTitle="@string/pref_syncConnectionType"
-        android:entries="@array/pref_syncConnectionTypes_entries"
-        android:entryValues="@array/pref_syncConnectionTypes_values"
-        android:defaultValue="@string/pref_syncConnectionTypes_default"/>
+        android:key="@string/pref_location"
+        android:title="@string/pref_location"
+        android:defaultValue="@string/pref_location"
+        />
 
-    <EditTextPreference
+    <ListPreference
 
-        android:key="@string/pref_quote_key"
-        android:title="@string/pref_quote_title"
-        android:summary="@string/pref_quote_summary"
-        android:defaultValue="@string/pref_quote_default">
+        android:dependency="@string/pref_temperature"
+        android:key="@string/pref_verbosity"
+        android:title="@string/pref_verbosity"
+        android:dialogTitle="@string/pref_verbosity"
+        android:defaultValue="@string/pref_verbosity"/>
 
-    </EditTextPreference>
+
+
 
     <PreferenceScreen
 
          android:key="button_voicemail_category_key"
-         android:title="@string/voicemail"
+         android:title="@string/fahrenheit"
          android:persistent="false">
     <ListPreference
 
         android:key="button_voicemail_provider_key"
-        android:title="@string/voicemail_provider"/>
+        android:title="@string/celsius"/>
     <PreferenceScreen
 
         android:key="button_voicemail_setup_key"
-        android:title="@string/voicemail_setup"
+        android:title="@string/units"
         android:persistent="false">
     </PreferenceScreen>
 
