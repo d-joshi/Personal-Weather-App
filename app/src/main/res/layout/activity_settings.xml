@@ -40,21 +40,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/unitsText">
 
-    <RadioButton
-        android:id="@+id/fahrenheit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/fahrenheit"
-        app:layout_constraintStart_toStartOf="@+id/radioGroup"
-        app:layout_constraintTop_toTopOf="@+id/radioGroup" />
+        <RadioButton
+            android:id="@+id/fahrenheit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fahrenheit"
+            app:layout_constraintStart_toStartOf="@+id/radioGroup"
+            app:layout_constraintTop_toTopOf="@+id/radioGroup" />
 
-    <RadioButton
-        android:id="@+id/celsius"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/celsius"
-        tools:layout_editor_absoluteX="93dp"
-        tools:layout_editor_absoluteY="177dp" />
+        <RadioButton
+            android:id="@+id/celsius"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/celsius"
+            tools:layout_editor_absoluteX="93dp"
+            tools:layout_editor_absoluteY="177dp" />
 
     </RadioGroup>
 
@@ -64,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/verbosity"
+        android:text="@string/verbosityText"
         app:layout_constraintStart_toStartOf="@+id/unitsText"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup"
         android:textSize="20dp"/>
@@ -73,46 +73,85 @@
         android:id="@+id/verbosity"
         android:layout_width="121dp"
         android:layout_height="26dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="236dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/radioGroup"
         app:layout_constraintTop_toBottomOf="@+id/verbosityText"
         tools:ignore="MissingConstraints" />
 
-    <EditText
-        android:id="@+id/lowTemp"
+    <TextView
+        android:id="@+id/tempPref"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="44dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/verbosity"
+        android:layout_marginTop="20dp"
+        android:text="@string/tempPref"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/verbosityText"
+        app:layout_constraintTop_toBottomOf="@+id/verbosity" />
+
+    <TextView
+        android:id="@+id/coldCool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/coldCool"
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="@+id/verbosity"
+        app:layout_constraintTop_toBottomOf="@+id/tempPref" />
+
+    <EditText
+        android:id="@+id/lowTempText"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/coolWarmText"
+        app:layout_constraintStart_toStartOf="@+id/highTemp"
+        app:layout_constraintTop_toTopOf="@+id/coolWarmText"
         tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/coolWarmText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/coolWarm"
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="@+id/coldCool"
+        app:layout_constraintTop_toBottomOf="@+id/coldCool" />
 
     <EditText
         android:id="@+id/midTemp"
-        android:layout_width="21dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="152dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/verbosityText" />
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/warmHotText"
+        app:layout_constraintStart_toStartOf="@+id/lowTempText"
+        app:layout_constraintTop_toTopOf="@+id/warmHotText" />
+
+    <TextView
+        android:id="@+id/warmHotText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/warmHot"
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="@+id/coolWarmText"
+        app:layout_constraintTop_toBottomOf="@+id/coolWarmText" />
 
     <EditText
         android:id="@+id/highTemp"
-        android:layout_width="wrap_content"
+        android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="148dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/verbosityText" />
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/coldCool"
+        app:layout_constraintStart_toEndOf="@+id/coldCool"
+        app:layout_constraintTop_toTopOf="@+id/coldCool" />
 
     <Button
         android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginBottom="136dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

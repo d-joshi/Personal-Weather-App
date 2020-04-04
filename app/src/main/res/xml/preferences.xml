@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListPreference
-        android:/>
-
 
     <CheckBoxPreference
         android:key="@string/pref_sync"
@@ -13,7 +10,7 @@
     <ListPreference
 
         android:dependency="@string/pref_sync"
-        android:key="@string/pref_syncConnectionType"
+        android:key="@string/pref_"
         android:title="@string/pref_syncConnectionType"
         android:dialogTitle="@string/pref_syncConnectionType"
         android:entries="@array/pref_syncConnectionTypes_entries"

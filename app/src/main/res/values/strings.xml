@@ -6,5 +6,14 @@
     <string name="units">Temperature Unit:</string>
     <string name="fahrenheit">Fahrenheit</string>
     <string name="celsius">Celsius</string>
-    <string name="verbosity">How long do you want your personal message?</string>
+    <string name="verbosityText">Length of personal message:</string>
+    <string-array name="verbosity">
+        <item>short</item>
+        <item>medium</item>
+        <item>long</item>
+    </string-array>
+    <string name="tempPref">What do you consider the threshold between...</string>
+    <string name="coldCool">cold and cool: </string>
+    <string name="coolWarm">cool and warm: </string>
+    <string name="warmHot">warm and hot: </string>
 </resources>
