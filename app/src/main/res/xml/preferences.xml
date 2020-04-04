@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
     <ListPreference
 
 android:title="@string/app_name"
@@ -27,13 +28,11 @@ android:icon="@drawable/ic_cloud_circle_black_24dp"/>
         android:defaultValue="@string/pref_verbosity"/>
 
 
-
-
     <PreferenceScreen
+         android:title="@string/"
+         android:persistent="false"/>
 
-         android:key="button_voicemail_category_key"
-         android:title="@string/fahrenheit"
-         android:persistent="false">
+
     <ListPreference
 
         android:key="button_voicemail_provider_key"

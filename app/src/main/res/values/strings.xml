@@ -6,6 +6,19 @@
     <string name="pref_units">Select the temperature unit:</string>
     <string name="pref_location">Choose your location</string>
     <string name="celsius">Celsius</string>
+
     <string name="pref_verbosity">Customize Daily Personal Message</string>
     <string name="pref_temperature">Temperature</string>
+=======
+    <string name="verbosityText">Length of personal message:</string>
+    <string-array name="verbosity">
+        <item>short</item>
+        <item>medium</item>
+        <item>long</item>
+    </string-array>
+    <string name="tempPref">What do you consider the threshold between...</string>
+    <string name="coldCool">cold and cool: </string>
+    <string name="coolWarm">cool and warm: </string>
+    <string name="warmHot">warm and hot: </string>
+>>>>>>> 793c766424afe524e4345db3b79e35f193c01e9b
 </resources>
