@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen
 
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:recycleEnabled="false"/>
     <ListPreference
 
-android:title="@string/app_name"
-android:icon="@drawable/ic_cloud_circle_black_24dp"/>
+    android:title="@string/app_name"
+        android:dialogTitle="@string/app_name"
+    android:icon="@drawable/ic_cloud_circle_black_24dp"/>
 
     <ListPreference
         android:key="@string/pref_temperature"
@@ -12,12 +15,20 @@ android:icon="@drawable/ic_cloud_circle_black_24dp"/>
         android:summary="@string/pref_units"
         android:defaultValue="false" />
 
+
+
+    <CheckBoxPreference
+        android:title="@string/pref_notifications"
+        android:dialogTitle="@string/pref_notifications"
+        android:defaultValue="@string/pref_notifications"/>
+
     <ListPreference
 
         android:key="@string/pref_location"
         android:title="@string/pref_location"
         android:defaultValue="@string/pref_location"
         />
+
 
     <ListPreference
 
@@ -28,22 +39,18 @@ android:icon="@drawable/ic_cloud_circle_black_24dp"/>
         android:defaultValue="@string/pref_verbosity"/>
 
 
-    <PreferenceScreen
-         android:title="@string/"
+    <ListPreference
+         android:title="@string/verbosityText"
          android:persistent="false"/>
 
-
     <ListPreference
+        android:title = "@string/pref_aboutus"
+        android:key="@string/pref_aboutus"
+        android:dependency="@string/pref_aboutus"/>
 
-        android:key="button_voicemail_provider_key"
-        android:title="@string/celsius"/>
-    <PreferenceScreen
 
-        android:key="button_voicemail_setup_key"
-        android:title="@string/units"
-        android:persistent="false">
-    </PreferenceScreen>
+
 
 </PreferenceScreen>
 
-</PreferenceScreen>
+

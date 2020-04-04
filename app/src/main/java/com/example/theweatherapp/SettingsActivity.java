@@ -14,11 +14,6 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        Spinner verbosity = (Spinner) findViewById(R.id.verbosity);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.verbosity, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        verbosity.setAdapter(adapter);
-
     }
     public static class SettingsFragment extends PreferenceFragment {
         @Override

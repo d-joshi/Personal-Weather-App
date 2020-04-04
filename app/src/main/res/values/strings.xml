@@ -9,7 +9,7 @@
 
     <string name="pref_verbosity">Customize Daily Personal Message</string>
     <string name="pref_temperature">Temperature</string>
-=======
+
     <string name="verbosityText">Length of personal message:</string>
     <string-array name="verbosity">
         <item>short</item>
@@ -20,5 +20,9 @@
     <string name="coldCool">cold and cool: </string>
     <string name="coolWarm">cool and warm: </string>
     <string name="warmHot">warm and hot: </string>
->>>>>>> 793c766424afe524e4345db3b79e35f193c01e9b
+    <string name="pref_aboutus">About Us</string>
+    <string name="pref_notifications">Turn on Notifications</string>
+    <item name="verbosity" type="id">Select length of the message</item>
+    <item name="lowTemp" type="id">Low temperature</item>
+    <item name="save" type="id">Save</item>
 </resources>
