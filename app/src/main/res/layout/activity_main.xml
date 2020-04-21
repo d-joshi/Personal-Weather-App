@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="25dp"
-    android:background="@drawable/bg_gradient">
+    android:background="@drawable/bg_gradient"
     tools:context=".MainActivity">
-
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="260dp"
         android:layout_height="59dp"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Enter Location"
+        android:hint="Enter Location"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,7 +27,7 @@
         android:layout_height="34dp"
         android:layout_marginStart="46dp"
         android:layout_marginTop="11dp"
-        android:text="Enter the city or state above"
+        android:hint="Enter the city or state above"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
 
@@ -38,7 +37,7 @@
         android:layout_height="54dp"
         android:layout_marginStart="76dp"
         android:layout_marginTop="32dp"
-        android:text="Click to get current location"
+        android:text="Click to get the current location"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -46,9 +45,9 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
-        android:layout_marginBottom="49dp"
-        android:text="Go Back"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="100dp"
+        android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -56,10 +55,21 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="72dp"
-        android:layout_marginBottom="47dp"
-        android:text="Submit"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="100dp"
+        android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="49dp"
+        android:onClick="Settings_button"
+        android:layout_height="51dp"
+        android:layout_marginStart="312dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_settings_applications_black_24dp"
+        tools:ignore="OnClick" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
