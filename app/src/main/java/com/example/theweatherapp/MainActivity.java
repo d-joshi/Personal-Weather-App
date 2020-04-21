@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         setContentView(R.layout.forecast);
 
         unit = (RadioButton) findViewById(R.id.unit);
@@ -38,15 +37,5 @@ public class MainActivity extends AppCompatActivity {
         midTemp = (EditText) findViewById(R.id.midTemp);
         highTemp = (EditText) findViewById(R.id.highTemp);
         save = (Button) findViewById(R.id.save);
-
-        save.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                saveData();
-            }
-        });
-    }
-    public void saveData(){
-
     }
 }

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="unit" type="id" />
-    <item name="midTemp" type="id">Medium Temperature</item>
-    <item name="highTemp" type="id">High Temperature</item>
+    <item name="midTemp" type="id" />
+    <item name="highTemp" type="id" />
+
+
 </resources>

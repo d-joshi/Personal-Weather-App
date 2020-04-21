@@ -22,7 +22,9 @@
     <string name="warmHot">warm and hot: </string>
     <string name="pref_aboutus">About Us</string>
     <string name="pref_notifications">Turn on Notifications</string>
-    <item name="verbosity" type="id">Select length of the message</item>
-    <item name="lowTemp" type="id">Low temperature</item>
-    <item name="save" type="id">Save</item>
+
+    <item name="verbosity" type="id"/>
+    <item name="lowTemp" type="id"/>
+    <item name="save" type="id"/>
+
 </resources>
