@@ -16,15 +16,13 @@
         <item>medium</item>
         <item>long</item>
     </string-array>
-    <string name="tempPref">What do you consider the threshold between...</string>
-    <string name="coldCool">cold and cool: </string>
-    <string name="coolWarm">cool and warm: </string>
-    <string name="warmHot">warm and hot: </string>
-    <string name="pref_aboutus">About Us</string>
-    <string name="pref_notifications">Turn on Notifications</string>
-
-    <item name="verbosity" type="id"/>
-    <item name="lowTemp" type="id"/>
-    <item name="save" type="id"/>
-
+    <string name="tempPref"></string>
+    <string name="coldCool"></string>
+    <string name="coolWarm"></string>
+    <string name="warmHot"></string>
+    <string name="pref_aboutus"></string>
+    <string name="pref_notifications"></string>
+    <item name="verbosity" type="id"></item>
+    <item name="lowTemp" type="id"></item>
+    <item name="save" type="id"></item>
 </resources>
