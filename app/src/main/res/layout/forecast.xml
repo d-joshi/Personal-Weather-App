@@ -1,81 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/bg_gradient"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
-   
-    <EditText
-        android:id="@+id/editText8"
-        android:layout_width="77dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="9pm"
-        android:inputType="time"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText7" />
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentBottom="true"
+    android:layout_marginEnd="0dp"
+    android:layout_marginBottom="0dp"
+    android:background="@drawable/bg_gradient">
 
-    <EditText
-        android:id="@+id/editText7"
-        android:layout_width="77dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:hint="6pm"
-        android:inputType="time"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText6" />
+            <EditText
+                android:id="@+id/personalmessage"
+                android:layout_width="307dp"
+                android:layout_height="201dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="35dp"
+                android:layout_marginBottom="114dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Personalized Message"
+                android:inputType="textMultiLine"
+                tools:ignore="DuplicateIds" />
 
-    <EditText
-        android:id="@+id/editText6"
-        android:layout_width="77dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:hint="3pm"
-        android:inputType="time"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="150dp"
+                android:layout_height="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="49dp"
+                android:text="Daily Forecast"
+                tools:ignore="DuplicateIds" />
 
-    <EditText
-        android:id="@+id/editText4"
-        android:layout_width="307dp"
-        android:layout_height="201dp"
-        android:layout_marginBottom="28dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Personalized Message"
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+            <EditText
+                android:id="@+id/editText5"
+                android:layout_width="124dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/textView3"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="29dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="Time"
+                android:inputType="time" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="150dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="68dp"
-        android:text="Daily Forecast"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="64dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="38dp"
+                android:layout_marginTop="253dp"
+                android:hint="9pm" />
 
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="124dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:hint="Time"
-        android:inputType="time"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            <Button
+                android:id="@+id/addyourown"
+                android:onClick="Add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="51dp"
+                android:layout_marginEnd="44dp"
+                android:text="Page 2" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <EditText
+            android:id="@+id/editText4"
+            android:layout_width="307dp"
+            android:layout_height="201dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="35dp"
+            android:layout_marginBottom="114dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Personalized Message"
+            android:inputType="textMultiLine" />
+
+
+
+</RelativeLayout>

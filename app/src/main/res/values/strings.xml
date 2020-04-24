@@ -23,8 +23,11 @@
     <string name="pref_aboutus">About Us</string>
     <string name="pref_notifications">Turn on Notifications</string>
 
-    <item name="verbosity" type="id"/>
-    <item name="lowTemp" type="id"/>
-    <item name="save" type="id"/>
+    <item name="verbosity" type="id" />
+    <item name="lowTemp" type="id" />
+    <item name="save" type="id" />
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
