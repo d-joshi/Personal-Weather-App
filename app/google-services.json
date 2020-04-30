@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "914548721902",
+    "firebase_url": "https://personalizedweatherapp.firebaseio.com",
+    "project_id": "personalizedweatherapp",
+    "storage_bucket": "personalizedweatherapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:914548721902:android:9461d3af465b34d17d8bff",
+        "android_client_info": {
+          "package_name": "com.example.theweatherapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "914548721902-6o4lm1qaav1dl1j7f0aq4eekl0du8vhh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGpGUJX1xnjiuFN_XfNxNHF6qKIQ7Vz8Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "914548721902-6o4lm1qaav1dl1j7f0aq4eekl0du8vhh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
