@@ -1,7 +1,6 @@
 package com.example.theweatherapp;
 
 import android.os.Bundle;
-<<<<<<< HEAD
 import android.os.Handler;
 import android.text.Html;
 import android.util.Log;

@@ -27,6 +27,7 @@ public class ForecastActivity extends AppCompatActivity {
     TextView lowTxt;
     TextView conditionTxt;
     TextView humidityTxt;
+    TextView windTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,8 @@ public class ForecastActivity extends AppCompatActivity {
         lowTxt = findViewById(R.id.lowTemp);
         conditionTxt = findViewById(R.id.condition);
         humidityTxt = findViewById(R.id.humidity);
+        windTxt = findViewById(R.id.wind);
+
 
         new WeatherTask().execute();
     }
@@ -68,7 +71,7 @@ public class ForecastActivity extends AppCompatActivity {
         }*/
 
         protected String doInBackground(String... args) {
-            String response = HttpRequest.excuteGet("https://api.openweathermap.org/data/2.5/weather?" + LOC + "&units=" + UNITS + "&appid=" + API);
+            String response = HttpRequest.excuteGet("https://api.openweathermap.org/data/2.5/forecast?" + LOC + "&units=" + UNITS + "&appid=" + API);
             Log.d("response", response);
             return response;
         }
@@ -77,9 +80,10 @@ public class ForecastActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             try{
                 JSONObject jsonObject = new JSONObject(result);
-                JSONObject weather = jsonObject.getJSONArray("weather").getJSONObject(0);
-                JSONObject main = jsonObject.getJSONObject("main");
-                JSONObject wind = jsonObject.getJSONObject("wind");
+                JSONObject now = jsonObject.getJSONArray("list").getJSONObject(0);
+                JSONObject weather = now.getJSONArray("weather").getJSONObject(0);
+                JSONObject main = now.getJSONObject("list");
+                JSONObject wind = now.getJSONObject("wind");
 
                 //get unit strings
                 String[] units = new String[2];
@@ -102,6 +106,7 @@ public class ForecastActivity extends AppCompatActivity {
                 //get humidity
                 String humidity = main.getString("humidity");
 
+                String windSpeed = wind.getString("speed");
                 float deg = Float.parseFloat(wind.getString("deg"));
                 int degInt = (int) Math.floor((deg + 11.75)/23.5);
                 String direction = new String();
@@ -146,6 +151,8 @@ public class ForecastActivity extends AppCompatActivity {
                 lowTxt.setText("low: " + low + units[0]);
                 conditionTxt.setText(condition);
                 humidityTxt.setText(humidity + "% humidity");
+                windTxt.setText("wind: " + windSpeed + " " + direction);
+
             }
             catch (JSONException e) {
                 tempTxt.setText("err");
