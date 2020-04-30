@@ -1,17 +1,7 @@
 package com.example.theweatherapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.viewpager.widget.ViewPager;
-
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.os.Handler;
 import android.text.Html;
 import android.util.Log;
@@ -56,15 +46,23 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public static final String SHARED_PREFS = "";
+=======
 
+import androidx.appcompat.app.AppCompatActivity;
+
+
+
+public class MainActivity extends AppCompatActivity {
+>>>>>>> 171594c7e6c79f6b108154248443e9002e080275
+    public static final String SHARED_PREFS = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.forecast);
 
+        setContentView(R.layout.activity_main);
 
+<<<<<<< HEAD
         unit = (RadioButton) findViewById(R.id.unit);
         verbosity = (Spinner) findViewById(R.id.verbosity);
         lowTemp = (EditText) findViewById(R.id.lowTemp);
@@ -99,4 +97,8 @@ db.collection("users")
 
 }}
 
+=======
+    }
+>>>>>>> 171594c7e6c79f6b108154248443e9002e080275
 
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="latitude"></string>
+    <string name="longitude"></string>
+
+    <string name="city">philadelphia</string>
+    <string name="state">pa</string>
+    <string name="country">usa</string>
+
+    <string name="cityCode"></string>
+</resources>
