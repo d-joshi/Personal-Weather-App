@@ -51,9 +51,9 @@ public class ForecastActivity extends AppCompatActivity {
             LOC = getString(R.string.cityCode);
         }
 
-        UNITS = "metric";
+        UNITS = "imperial";
 
-        setContentView(R.layout.forecast);
+        setContentView(R.layout.forecast_activity);
 
         tempTxt = findViewById(R.id.temp);
         highTxt = findViewById(R.id.highTemp);
@@ -102,7 +102,7 @@ public class ForecastActivity extends AppCompatActivity {
                 }
 
                 //get temperature
-                String temp = Float.toString(Math.round(Float.parseFloat(main.getString("temp")))).substring(0,2);
+                float temp = Math.round(Float.parseFloat(main.getString("temp")));
                 String high = Float.toString(Math.round(Float.parseFloat(main.getString("temp_max")))).substring(0,2);
                 String low = Float.toString(Math.round(Float.parseFloat(main.getString("temp_min")))).substring(0,2);
 
@@ -152,12 +152,12 @@ public class ForecastActivity extends AppCompatActivity {
 
                 }
 
-                tempTxt.setText(temp + units[0]);
+                tempTxt.setText(getString(R.string.temperature, temp, units[0]));
                 highTxt.setText("high: " + high + units[0]);
                 lowTxt.setText("low: " + low + units[0]);
                 conditionTxt.setText(condition);
                 humidityTxt.setText(humidity + "% humidity");
-                windTxt.setText("wind: " + windSpeed + " " + direction);
+                windTxt.setText("wind: " + windSpeed + " "  + units[1] + " " + direction);
 
             }
             catch (JSONException e) {
