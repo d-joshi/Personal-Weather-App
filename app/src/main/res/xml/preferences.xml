@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
 
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:recycleEnabled="false"/>
-    <ListPreference
+    xmlns:android="http://schemas.android.com/apk/res/android"><ListPreference
 
     android:title="@string/app_name"
         android:dialogTitle="@string/app_name"
     android:icon="@drawable/ic_cloud_circle_black_24dp"/>
+    <CheckBoxPreference
+        android:title="Keep me logged in"
+        android:dialogTitle="@string/pref_notifications"
+        android:defaultValue="@string/pref_notifications"/>
+
 
     <ListPreference
         android:key="@string/pref_temperature"
@@ -17,36 +20,13 @@
 
 
 
-    <CheckBoxPreference
-        android:title="@string/pref_notifications"
-        android:dialogTitle="@string/pref_notifications"
-        android:defaultValue="@string/pref_notifications"/>
-
-    <ListPreference
-
-        android:key="@string/pref_location"
-        android:title="@string/pref_location"
-        android:defaultValue="@string/pref_location"
-        />
-
-
-    <ListPreference
-
-        android:dependency="@string/pref_temperature"
-        android:key="@string/pref_verbosity"
-        android:title="@string/pref_verbosity"
-        android:dialogTitle="@string/pref_verbosity"
-        android:defaultValue="@string/pref_verbosity"/>
 
 
     <ListPreference
          android:title="@string/verbosityText"
          android:persistent="false"/>
 
-    <ListPreference
-        android:title = "@string/pref_aboutus"
-        android:key="@string/pref_aboutus"
-        android:dependency="@string/pref_aboutus"/>
+
 
 
 

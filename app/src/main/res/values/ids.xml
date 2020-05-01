@@ -4,4 +4,5 @@
     <item name="midTemp" type="id" />
     <item name="highTemp" type="id" />
     <item name="Settings_button" type="id" />
+    <item name="Email_Address" type="id"/>
 </resources>
