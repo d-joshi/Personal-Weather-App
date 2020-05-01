@@ -1,5 +1,6 @@
 package com.example.theweatherapp;
 
+<<<<<<< HEAD
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,14 +10,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+=======
+>>>>>>> 006b2680acc38f4b86cf0bf6d41b24d3df0393e3
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.EditText;
 
+<<<<<<< HEAD
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,13 +29,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+=======
+import androidx.appcompat.app.AppCompatActivity;
+>>>>>>> 006b2680acc38f4b86cf0bf6d41b24d3df0393e3
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -47,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
      private EditText midTemp;
      private EditText highTemp;
      private Button save;
+<<<<<<< HEAD
     private Button page2;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -80,4 +80,9 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 }
+=======
+     private Button page2;
+     FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+>>>>>>> 006b2680acc38f4b86cf0bf6d41b24d3df0393e3
 
