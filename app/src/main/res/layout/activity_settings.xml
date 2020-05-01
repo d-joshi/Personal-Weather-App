@@ -4,7 +4,7 @@
     android:layout_height="match_parent" >
     <fragment
         android:id = "@+id/frag_settings"
-        class ="com.example.theweatherapp.SettingsActivity$SettingsFragment"
+        class ="com.example.theweatherapp.SettingsActivity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </FrameLayout>
