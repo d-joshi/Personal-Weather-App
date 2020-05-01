@@ -12,6 +12,8 @@ import com.androdocs.httprequest.HttpRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 
 public class ForecastActivity extends AppCompatActivity {
     private static String forecastDaysNum = "3";
@@ -28,6 +30,8 @@ public class ForecastActivity extends AppCompatActivity {
     TextView conditionTxt;
     TextView humidityTxt;
     TextView windTxt;
+
+    ArrayList<ArrayList<TextView>> hourlyTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +63,7 @@ public class ForecastActivity extends AppCompatActivity {
         windTxt = findViewById(R.id.wind);
 
 
+
         new WeatherTask().execute();
     }
 
@@ -70,6 +75,7 @@ public class ForecastActivity extends AppCompatActivity {
 
         }*/
 
+        @Override
         protected String doInBackground(String... args) {
             String response = HttpRequest.excuteGet("https://api.openweathermap.org/data/2.5/forecast?" + LOC + "&units=" + UNITS + "&appid=" + API);
             Log.d("response", response);
@@ -82,7 +88,7 @@ public class ForecastActivity extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject(result);
                 JSONObject now = jsonObject.getJSONArray("list").getJSONObject(0);
                 JSONObject weather = now.getJSONArray("weather").getJSONObject(0);
-                JSONObject main = now.getJSONObject("list");
+                JSONObject main = now.getJSONObject("main");
                 JSONObject wind = now.getJSONObject("wind");
 
                 //get unit strings
