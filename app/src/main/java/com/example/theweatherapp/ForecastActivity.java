@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -177,12 +178,23 @@ public class ForecastActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
         int id = item.getItemId();
 
-        if(id == R.id.Action_settings) {
-            Intent intent = new Intent(ForecastActivity.this, SettingsFragments.class);
+        if( id == R.id.Action_settings) {
+            Intent intent = new Intent(ForecastActivity.this, SettingsActivity.class);
             startActivity(intent);
             return true;
+            }
+        if(id == R.id.logout) {
+                Intent intent = new Intent(ForecastActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+                Toast.makeText(ForecastActivity.this, "Successfully Logged out", Toast.LENGTH_SHORT).show();
+            }
+        if(id == R.id.enter_location) {
+            Intent intent = new Intent (ForecastActivity.this, LocationActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

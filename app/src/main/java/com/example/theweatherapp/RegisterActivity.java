@@ -18,64 +18,67 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
-
-    EditText Name, Email, Password;
-    Button register;
-    TextView bt_login;
-    FirebaseAuth firebaseAuth;
+    EditText emailId, password;
+    Button btnSignUp;
+    TextView tvSignIn;
+    FirebaseAuth mFirebaseAuth;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_main);
 
-        Name =  findViewById(R.id.enter_name);
-        Email = findViewById(R.id.enter_email);
-        Password = findViewById(R.id.enter_password);
-        register = findViewById(R.id.bt_register);
-        bt_login = findViewById(R.id.tv_login);
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        emailId = findViewById(R.id.enter_email);
+        password = findViewById(R.id.enter_password);
+        btnSignUp = findViewById(R.id.bt_register);
+        tvSignIn = findViewById(R.id.tv_login);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        if(firebaseAuth.getCurrentUser() != null) {
-            startActivity(new Intent(getApplicationContext(), ForecastActivity.class));
-            finish();
-        }
-
-
-        register.setOnClickListener(new View.OnClickListener() {
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = Email.getText().toString();
-                String password = Password.getText().toString();
-
-                if(TextUtils.isEmpty(email)) {
-                    Email.setError("Email is required");
-                    return;
+                String email = emailId.getText().toString();
+                String pwd = password.getText().toString();
+                if(email.isEmpty()){
+                    emailId.setError("Please enter email id");
+                    emailId.requestFocus();
                 }
-
-                if(TextUtils.isEmpty(password)) {
-                    Password.setError("Password is required");
-                    return;
+                else  if(pwd.isEmpty()){
+                    password.setError("Please enter your password");
+                    password.requestFocus();
                 }
-                if (password.length() < 6) {
-                    Password.setError("Password must be > 6 characters");
-                    return;
+                else  if(email.isEmpty() && pwd.isEmpty()){
+                    Toast.makeText(RegisterActivity.this,"Fields Are Empty!",Toast.LENGTH_SHORT).show();
                 }
-
-
-                firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(RegisterActivity.this, "User is created", Toast.LENGTH_LONG).show();
+                else  if(!(email.isEmpty() && pwd.isEmpty())){
+                    mFirebaseAuth.createUserWithEmailAndPassword(email, pwd).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(!task.isSuccessful()){
+                                Toast.makeText(RegisterActivity.this,"SignUp Unsuccessful, Please Try Again",Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                startActivity(new Intent(RegisterActivity.this,ForecastActivity.class));
+                            }
                         }
-                        else {
-                            Toast.makeText(RegisterActivity.this, "Error has Occured" + task.getException(), Toast.LENGTH_LONG).show();
+                    });
+                }
+                else{
+                    Toast.makeText(RegisterActivity.this,"Error Occurred!",Toast.LENGTH_SHORT).show();
 
-                        }
-                    }
-                });
+                }
+            }
+        });
+
+        tvSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(RegisterActivity.this,LoginActivity.class);
+                startActivity(i);
             }
         });
     }
 }
+
+
+
