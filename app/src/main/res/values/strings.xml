@@ -9,6 +9,7 @@
 
     <string name="pref_verbosity">Customize Daily Personal Message</string>
     <string name="pref_temperature">Temperature</string>
+    <string name="action_Settings">Settings</string>
 
     <string name="verbosityText">Length of personal message:</string>
     <string-array name="verbosity">

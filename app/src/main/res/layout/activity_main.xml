@@ -47,16 +47,6 @@
         android:layout_marginBottom="142dp"
         android:text="Save" />
 
-    <ImageButton
-        android:id="@+id/Settings_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="312dp"
-        android:layout_marginTop="279dp"
-        android:onClick="Settings_b"
-        app:srcCompat="@drawable/ic_settings_applications_black_24dp" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="198dp"
