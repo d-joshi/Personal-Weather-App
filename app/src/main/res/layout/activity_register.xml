@@ -43,7 +43,7 @@
         android:inputType="textEmailAddress" />
 
     <Button
-        android:id="@+id/bt_register"
+        android:id="@+id/registerbutton"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/enter_password"

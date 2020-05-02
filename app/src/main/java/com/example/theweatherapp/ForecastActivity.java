@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.androdocs.httprequest.HttpRequest;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -157,7 +158,9 @@ public class ForecastActivity extends AppCompatActivity {
 
                 }
 
+/*
                 tempTxt.setText(getString(R.string.temperature, temp, units[0]));
+*/
                 highTxt.setText("high: " + high + units[0]);
                 lowTxt.setText("low: " + low + units[0]);
                 conditionTxt.setText(condition);
