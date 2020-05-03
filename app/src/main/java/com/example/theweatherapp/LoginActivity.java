@@ -2,8 +2,6 @@ package com.example.theweatherapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,47 +52,48 @@ public class LoginActivity extends AppCompatActivity {
         };
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
-                                         @Override
-                                         public void onClick(View v) {
-                                             String email = emailId.getText().toString();
-                                             String pwd = password.getText().toString();
+             @Override
+             public void onClick(View v) {
+                 String email = emailId.getText().toString();
+                 String pwd = password.getText().toString();
 
-                                             if (email.isEmpty() && pwd.isEmpty()) {
-                                                 Toast.makeText(LoginActivity.this, "Fields Are Empty!", Toast.LENGTH_SHORT).show();
-                                             } else if (email.isEmpty()) {
-                                                 emailId.setError("Please enter email id");
-                                             } else if (pwd.isEmpty()) {
-                                                 password.setError("Please enter your password");
-                                             }
+                 if (email.isEmpty() && pwd.isEmpty()) {
+                     Toast.makeText(LoginActivity.this, "Fields Are Empty!", Toast.LENGTH_SHORT).show();
+                 }
+                 else if (email.isEmpty()) {
+                     emailId.setError("Please enter email id");
+                 }
+                 else if (pwd.isEmpty()) {
+                     password.setError("Please enter your password");
+                 }
+                 else if(!(email.isEmpty() || pwd.isEmpty())) {
+                    mFirebaseAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                     @Override
+                     public void onComplete(@NonNull Task<AuthResult> task) {
+                         if (!task.isSuccessful()) {
+                             Toast.makeText(LoginActivity.this, "Login error. Try again with the correct email/password.", Toast.LENGTH_SHORT).show();
+                         } else {
+                             Intent intToHome = new Intent(LoginActivity.this, ForecastActivity.class);
+                             startActivity(intToHome);
+                         }
+                     }
+                     });
+                 }
+             }
+         });
 
-                                             else if(!(email.isEmpty() && pwd.isEmpty())) {
-                                             mFirebaseAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                                                 @Override
-                                                 public void onComplete(@NonNull Task<AuthResult> task) {
-                                                     if (!task.isSuccessful()) {
-                                                         Toast.makeText(LoginActivity.this, "Login error. Try again with the correct email/password.", Toast.LENGTH_SHORT).show();
-                                                     } else {
-                                                         Intent intToHome = new Intent(LoginActivity.this, RegisterActivity.class);
-                                                         startActivity(intToHome);
-                                                     }
-                                                 }
-                                                 });
-                                             }
-                                         }
-                                     });
-
-                tvSignUp.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intSignUp = new Intent(LoginActivity.this, RegisterActivity.class);
-                        startActivity(intSignUp);
-                    }
-                });
-            }
-
+        tvSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
-            protected void onStart() {
-                super.onStart();
-                mFirebaseAuth.addAuthStateListener(mAuthStateListener);
+            public void onClick(View v) {
+                Intent intSignUp = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intSignUp);
             }
-        }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
+    }
+}

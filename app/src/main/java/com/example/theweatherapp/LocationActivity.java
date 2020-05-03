@@ -1,41 +1,29 @@
 package com.example.theweatherapp;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.Html;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.IOException;
@@ -69,12 +57,6 @@ public class LocationActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        unit = (RadioButton) findViewById(R.id.unit);
-        verbosity = (Spinner) findViewById(R.id.verbosity);
-        lowTemp = (EditText) findViewById(R.id.lowTemp);
-        midTemp = (EditText) findViewById(R.id.midTemp);
-        highTemp = (EditText) findViewById(R.id.highTemp);
-        save = (Button) findViewById(R.id.save);
 
         currlocation = findViewById(R.id.currentlocation);
         textView1 = findViewById(R.id.text_view1);

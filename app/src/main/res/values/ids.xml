@@ -3,6 +3,7 @@
     <item name="unit" type="id" />
     <item name="midTemp" type="id" />
     <item name="highTemp" type="id" />
+    <item name="lowTemp" type="id" />
     <item name="Settings_button" type="id" />
     <item name="enter_location" type="id" />
 </resources>

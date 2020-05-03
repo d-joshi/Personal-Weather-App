@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="blah"></string>
+    <string-array name="units">
+        <item>metric</item>
+        <item>imperial</item>
+    </string-array>
+
+    <string-array name="unitsData">
+        <item>metric</item>
+        <item>imperial</item>
+    </string-array>
+
+    <string-array name="messageLength">
+        <item>short</item>
+        <item>medium</item>
+        <item>long</item>
+    </string-array>
+
+    <string-array name="messageLengthData">
+        <item>short</item>
+        <item>medium</item>
+        <item>long</item>
+    </string-array>
 </resources>

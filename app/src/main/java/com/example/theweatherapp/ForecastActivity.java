@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.androdocs.httprequest.HttpRequest;
-import com.google.firebase.auth.FirebaseAuth;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,6 +41,7 @@ public class ForecastActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_forecast);
 
         if(!getString(R.string.latitude).isEmpty() && !getString(R.string.longitude).isEmpty()){
             LOC = "lat=" + getString(R.string.latitude) + "&lon=" +getString(R.string.longitude);
@@ -59,7 +59,7 @@ public class ForecastActivity extends AppCompatActivity {
 
         UNITS = "imperial";
 
-        setContentView(R.layout.forecast_activity);
+        setContentView(R.layout.activity_forecast);
 
         tempTxt = findViewById(R.id.temp);
         highTxt = findViewById(R.id.highTemp);
@@ -108,7 +108,7 @@ public class ForecastActivity extends AppCompatActivity {
                 }
 
                 //get temperature
-                float temp = Math.round(Float.parseFloat(main.getString("temp")));
+                String temp = Float.toString(Math.round(Float.parseFloat(main.getString("temp")))).substring(0,2);
                 String high = Float.toString(Math.round(Float.parseFloat(main.getString("temp_max")))).substring(0,2);
                 String low = Float.toString(Math.round(Float.parseFloat(main.getString("temp_min")))).substring(0,2);
 
@@ -158,9 +158,7 @@ public class ForecastActivity extends AppCompatActivity {
 
                 }
 
-/*
-                tempTxt.setText(getString(R.string.temperature, temp, units[0]));
-*/
+                tempTxt.setText(temp + units[0]);
                 highTxt.setText("high: " + high + units[0]);
                 lowTxt.setText("low: " + low + units[0]);
                 conditionTxt.setText(condition);

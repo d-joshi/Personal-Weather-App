@@ -1,35 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    xmlns:android="http://schemas.android.com/apk/res/android"><ListPreference
-
-    android:title="@string/app_name"
+    <ListPreference
+        android:title="@string/app_name"
         android:dialogTitle="@string/app_name"
-    android:icon="@drawable/ic_cloud_circle_black_24dp"/>
+        android:icon="@drawable/ic_cloud_circle_black_24dp"/>
+
     <CheckBoxPreference
+        android:key="loggedIn"
         android:title="Keep me logged in"
-        android:dialogTitle="@string/pref_notifications"
-        android:defaultValue="@string/pref_notifications"/>
-
-
-    <ListPreference
-        android:key="@string/pref_temperature"
-        android:title="@string/pref_temperature"
-        android:summary="@string/pref_units"
-        android:defaultValue="false" />
-
-
-
-
+        android:dialogTitle="@string/pref_logged_in"
+        android:defaultValue="false"/>
 
     <ListPreference
-         android:title="@string/verbosityText"
-         android:persistent="false"/>
+        android:key="units"
+        android:title="Units"
+        android:summary="Please choose metric or imperial"
+        android:entries="@array/units"
+        android:entryValues="@array/unitsData"
+        android:defaultValue="metric" />
 
-
-
-
-
+    <ListPreference
+        android:key="messageLength"
+        android:title="Length of personal message"
+        android:summary="How long would you like your personal message"
+        android:entries="@array/messageLength"
+        android:entryValues="@array/messageLengthData"
+        android:defaultValue="medium"/>
 
 </PreferenceScreen>
 

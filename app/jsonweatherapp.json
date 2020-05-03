@@ -57,7 +57,7 @@ WeatherForecast forecast = new WeatherForecast();
 
 // We create out JSONObject from the data
 JSONObject jObj = new JSONObject(data);
-JSONArray jArr = jObj.getJSONArray("list"); // Here we have the forecast_activity for every day
+JSONArray jArr = jObj.getJSONArray("list"); // Here we have the activity_forecast for every day
 
 // We traverse all the array and parse the data
 for (int i=0; i < jArr.length(); i++) {
