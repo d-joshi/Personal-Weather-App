@@ -9,9 +9,6 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,6 +20,8 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -34,15 +33,9 @@ import java.util.Map;
 
 
 public class LocationActivity extends AppCompatActivity {
-     private static String forecastDaysNum = "3";
-     String city = "Philadelphia, PA";
+    private static String forecastDaysNum = "3";
+    String city = "Philadelphia, PA";
 
-     private RadioButton unit;
-     private Spinner verbosity;
-     private EditText lowTemp;
-     private EditText midTemp;
-     private EditText highTemp;
-     private Button save;
 
     Button back;
     Button currlocation;
@@ -50,6 +43,14 @@ public class LocationActivity extends AppCompatActivity {
     FusedLocationProviderClient fusedLocationProviderClient;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+    public static final String LAT_KEY = "latitude";
+    public static final String LON_KEY = "longitude";
+    public static final String COUNTRY_KEY = "country";
+    public static final String LOCALITY_KET = "locality";
+    public static final String CITY_KEY = "city";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,12 +81,12 @@ public class LocationActivity extends AppCompatActivity {
             }
         });
         // Create a new user with a first and last name
-        Map<String, Object> user = new HashMap<>();
-        user.put("first", "Ada");
-        user.put("last", "Lovelace");
-        user.put("born", 1815);
+//        Map<String, Object> user = new HashMap<>();
+//        user.put("first", "Ada");
+//        user.put("last", "Lovelace");
+//        user.put("born", 1815);
 
-// Add a new document with a generated ID
+        // Add a new document with a generated ID
         db.collection("users")
                 .add(user)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -104,6 +105,17 @@ public class LocationActivity extends AppCompatActivity {
                         try {
                             Geocoder geocoder = new Geocoder(LocationActivity.this, Locale.getDefault());
                             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+
+                            Map<String, String> locationData = new HashMap<String, String>();
+
+                            locationData.put(LAT_KEY, Double.toString(addresses.get(0).getLatitude()));
+                            locationData.put(LON_KEY, Double.toString(addresses.get(0).getLongitude()));
+                            locationData.put(COUNTRY_KEY, addresses.get(0).getCountryName());
+                            locationData.put(LOCALITY_KET, addresses.get(0).getLocality());
+                            locationData.put(CITY_KEY, addresses.get(0).getAddressLine(0));
+
+                            db.collection("users/" + user.getUid()).add(locationData);
+
                             textView1.setText(Html.fromHtml("<font color ='#6200EE'><b>Latitude :</b><br></font>" + addresses.get(0).getLatitude())); //get latitude
                             textView2.setText(Html.fromHtml("<font color ='#6200EE'><b>Longitude :</b><br></font>" + addresses.get(0).getLongitude())); //get longitude
                             textView3.setText(Html.fromHtml("<font color ='#6200EE'><b>Country Name :</b><br></font>" + addresses.get(0).getCountryName())); //get country name

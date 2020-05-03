@@ -1,6 +1,8 @@
 package com.example.theweatherapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.androdocs.httprequest.HttpRequest;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,6 +26,12 @@ import java.util.ArrayList;
 
 public class ForecastActivity extends AppCompatActivity {
     private static String forecastDaysNum = "3";
+
+    SharedPreferences sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    CollectionReference users = db.collection("users");
+    String userID = "qxGBkwWEGNEjTKM0fgp1";
 
     String API = "2e623cf734abdaf0dccd465fdbdd49c2";
 
@@ -43,6 +53,8 @@ public class ForecastActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forecast);
 
+        //String latitude = users.document(userID)
+
         if(!getString(R.string.latitude).isEmpty() && !getString(R.string.longitude).isEmpty()){
             LOC = "lat=" + getString(R.string.latitude) + "&lon=" +getString(R.string.longitude);
         }else if(!getString(R.string.city).isEmpty()){
@@ -57,7 +69,7 @@ public class ForecastActivity extends AppCompatActivity {
             LOC = getString(R.string.cityCode);
         }
 
-        UNITS = "imperial";
+        UNITS = sharedPreferences.getString("units", "metric");
 
         setContentView(R.layout.activity_forecast);
 
@@ -72,6 +84,7 @@ public class ForecastActivity extends AppCompatActivity {
 
         new WeatherTask().execute();
     }
+
 
     class WeatherTask extends AsyncTask<String, Void, String> {
         /*@Override
