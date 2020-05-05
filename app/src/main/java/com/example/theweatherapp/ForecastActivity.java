@@ -23,11 +23,21 @@ import java.util.ArrayList;
 public class ForecastActivity extends AppCompatActivity {
     private static String forecastDaysNum = "3";
 
+<<<<<<< HEAD
+
+    SharedPreferences sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
+
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    CollectionReference users = db.collection("users");
+    String userID = "qxGBkwWEGNEjTKM0fgp1";
+=======
     //SharedPreferences sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
 
 //    FirebaseFirestore db = FirebaseFirestore.getInstance();
 //    CollectionReference users = db.collection("users");
 //    String userID = "qxGBkwWEGNEjTKM0fgp1";
+>>>>>>> 1533b018fe96da866587dec266503b9460721228
 
     String API = "2e623cf734abdaf0dccd465fdbdd49c2";
 
@@ -67,7 +77,13 @@ public class ForecastActivity extends AppCompatActivity {
             LOC = getString(R.string.cityCode);
         }
 
+<<<<<<< HEAD
+
+        UNITS = sharedPreferences.getString("units", "metric");
+=======
         UNITS = "metric";
+>>>>>>> 1533b018fe96da866587dec266503b9460721228
+
 
         setContentView(R.layout.activity_forecast);
 
