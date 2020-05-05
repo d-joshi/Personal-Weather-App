@@ -6,4 +6,6 @@
     <item name="lowTemp" type="id" />
     <item name="Settings_button" type="id" />
     <item name="enter_location" type="id" />
+    <item name="relative_layout" type="id" />
+    <item name="toolbar" type="id" />
 </resources>

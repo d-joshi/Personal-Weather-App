@@ -87,13 +87,14 @@ public class LocationActivity extends AppCompatActivity {
 //        user.put("born", 1815);
 
         // Add a new document with a generated ID
-        db.collection("users")
+      /*  db.collection("users")
                 .add(user)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                     }
                 });
+    }*/
     }
         private void getLocation() {
             fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
@@ -114,7 +115,10 @@ public class LocationActivity extends AppCompatActivity {
                             locationData.put(LOCALITY_KET, addresses.get(0).getLocality());
                             locationData.put(CITY_KEY, addresses.get(0).getAddressLine(0));
 
-                            db.collection("users/" + user.getUid()).add(locationData);
+
+/*
+                            db.collection("users" + user.getUid()).add(locationData);
+*/
 
                             textView1.setText(Html.fromHtml("<font color ='#6200EE'><b>Latitude :</b><br></font>" + addresses.get(0).getLatitude())); //get latitude
                             textView2.setText(Html.fromHtml("<font color ='#6200EE'><b>Longitude :</b><br></font>" + addresses.get(0).getLongitude())); //get longitude
