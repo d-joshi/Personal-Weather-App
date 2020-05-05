@@ -1,8 +1,6 @@
 package com.example.theweatherapp;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,8 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.androdocs.httprequest.HttpRequest;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,6 +23,7 @@ import java.util.ArrayList;
 public class ForecastActivity extends AppCompatActivity {
     private static String forecastDaysNum = "3";
 
+<<<<<<< HEAD
 
     SharedPreferences sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
 
@@ -34,6 +31,13 @@ public class ForecastActivity extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference users = db.collection("users");
     String userID = "qxGBkwWEGNEjTKM0fgp1";
+=======
+    //SharedPreferences sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
+
+//    FirebaseFirestore db = FirebaseFirestore.getInstance();
+//    CollectionReference users = db.collection("users");
+//    String userID = "qxGBkwWEGNEjTKM0fgp1";
+>>>>>>> 1533b018fe96da866587dec266503b9460721228
 
     String API = "2e623cf734abdaf0dccd465fdbdd49c2";
 
@@ -55,6 +59,8 @@ public class ForecastActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forecast);
 
+//        DocumentReference user = db.collection("users").document(userID);
+//        String latitude = user.
         //String latitude = users.document(userID)
 
         if(!getString(R.string.latitude).isEmpty() && !getString(R.string.longitude).isEmpty()){
@@ -71,8 +77,12 @@ public class ForecastActivity extends AppCompatActivity {
             LOC = getString(R.string.cityCode);
         }
 
+<<<<<<< HEAD
 
         UNITS = sharedPreferences.getString("units", "metric");
+=======
+        UNITS = "metric";
+>>>>>>> 1533b018fe96da866587dec266503b9460721228
 
 
         setContentView(R.layout.activity_forecast);
