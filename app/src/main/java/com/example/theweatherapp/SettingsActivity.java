@@ -1,10 +1,17 @@
 package com.example.theweatherapp;
 
 import android.annotation.SuppressLint;
+import android.app.FragmentTransaction;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
+import android.preference.PreferenceFragment;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceManager;
+
+import android.app.Fragment;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -12,17 +19,16 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("SettingsActivity", "hello there");
+        getSupportFragmentManager().beginTransaction()
+                .replace(android.R.id.content, new SettingsFragment())
+                .commit();
 
-        setContentView(R.layout.activity_settings);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        if(findViewById(R.id.frag_settings) != null){
-            if(savedInstanceState != null){
-                return;
-            }
 
-            getSupportFragmentManager().beginTransaction().add(R.id.frag_settings, new SettingsFragments()).commit();
-        }
+
     }
-
 }
+
+
+

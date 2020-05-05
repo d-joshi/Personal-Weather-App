@@ -19,8 +19,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity"/>
-        <activity android:name=".SettingsActivity"/>
-
+        <activity android:name=".SettingsActivity"
+            android:label="Settings"
+            android:parentActivityName=".ForecastActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ForecastActivity"/>
+        </activity>
         <activity android:name=".LocationActivity"/>
         <activity android:name=".ForecastActivity"/>
     </application>

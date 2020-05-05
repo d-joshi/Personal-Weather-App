@@ -16,13 +16,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.auth.User;
 
 public class RegisterActivity extends AppCompatActivity {
     EditText emailId, password;
     Button btnSignup;
     TextView tvSignIn;
     FirebaseAuth mFirebaseAuth;
-    //FirebaseFirestore db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,13 +59,9 @@ public class RegisterActivity extends AppCompatActivity {
                             if (!task.isSuccessful()) {
                                 Toast.makeText(RegisterActivity.this, "SignUp Unsuccessful, Please Try Again", Toast.LENGTH_SHORT).show();
                             } else {
-<<<<<<< HEAD
 
-                                db.collection("users").add(mFirebaseAuth.getCurrentUser().getUid());
-
-=======
                                 //db.collection("users").add(mFirebaseAuth.getCurrentUser().getUid());
->>>>>>> 1533b018fe96da866587dec266503b9460721228
+
                                 startActivity(new Intent(RegisterActivity.this, ForecastActivity.class));
                             }
                         }

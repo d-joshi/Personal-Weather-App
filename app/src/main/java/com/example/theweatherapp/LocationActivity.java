@@ -18,7 +18,12 @@ import androidx.core.app.ActivityCompat;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -37,9 +42,9 @@ public class LocationActivity extends AppCompatActivity {
     TextView textView1, textView2, textView3, textView4, textView5;
     FusedLocationProviderClient fusedLocationProviderClient;
 
-    //FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     public static final String LAT_KEY = "latitude";
     public static final String LON_KEY = "longitude";
@@ -82,13 +87,14 @@ public class LocationActivity extends AppCompatActivity {
 //        user.put("born", 1815);
 
         // Add a new document with a generated ID
-//        db.collection("users")
-//                .add(user)
-//                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//                    @Override
-//                    public void onSuccess(DocumentReference documentReference) {
-//                    }
-//                });
+      /*  db.collection("users")
+                .add(user)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                    }
+                });
+    }*/
     }
         private void getLocation() {
             fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
@@ -109,7 +115,10 @@ public class LocationActivity extends AppCompatActivity {
                             locationData.put(LOCALITY_KET, addresses.get(0).getLocality());
                             locationData.put(CITY_KEY, addresses.get(0).getAddressLine(0));
 
-                            //db.collection("users/" + user.getUid()).add(locationData);
+
+/*
+                            db.collection("users" + user.getUid()).add(locationData);
+*/
 
                             textView1.setText(Html.fromHtml("<font color ='#6200EE'><b>Latitude :</b><br></font>" + addresses.get(0).getLatitude())); //get latitude
                             textView2.setText(Html.fromHtml("<font color ='#6200EE'><b>Longitude :</b><br></font>" + addresses.get(0).getLongitude())); //get longitude
