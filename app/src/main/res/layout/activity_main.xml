@@ -10,9 +10,9 @@
     tools:context=".LocationActivity">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/enterLocation"
         android:layout_width="260dp"
-        android:layout_height="59dp"
+        android:layout_height="60dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="276dp"
@@ -52,7 +52,7 @@
         android:layout_width="198dp"
         android:layout_height="34dp"
 
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/enterLocation"
         android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="58dp"

@@ -194,6 +194,7 @@ public class ForecastActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if( id == R.id.Action_settings) {
+            Log.d("Action_settings", "action settings");
             Intent intent = new Intent(ForecastActivity.this, SettingsActivity.class);
             startActivity(intent);
             return true;
