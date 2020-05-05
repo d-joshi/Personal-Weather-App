@@ -27,7 +27,9 @@ import java.util.ArrayList;
 public class ForecastActivity extends AppCompatActivity {
     private static String forecastDaysNum = "3";
 
+
     SharedPreferences sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
+
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference users = db.collection("users");
@@ -69,7 +71,9 @@ public class ForecastActivity extends AppCompatActivity {
             LOC = getString(R.string.cityCode);
         }
 
+
         UNITS = sharedPreferences.getString("units", "metric");
+
 
         setContentView(R.layout.activity_forecast);
 

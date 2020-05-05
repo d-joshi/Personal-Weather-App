@@ -59,7 +59,9 @@ public class RegisterActivity extends AppCompatActivity {
                             if (!task.isSuccessful()) {
                                 Toast.makeText(RegisterActivity.this, "SignUp Unsuccessful, Please Try Again", Toast.LENGTH_SHORT).show();
                             } else {
+
                                 db.collection("users").add(mFirebaseAuth.getCurrentUser().getUid());
+
                                 startActivity(new Intent(RegisterActivity.this, ForecastActivity.class));
                             }
                         }
