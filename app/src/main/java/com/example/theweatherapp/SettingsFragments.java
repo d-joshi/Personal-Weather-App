@@ -10,7 +10,7 @@ import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
-public class SettingsFragments extends PreferenceFragmentCompat{
+public class SettingsFragments extends PreferenceFragmentCompat {
     private CheckBoxPreference loggedIn;
     private ListPreference units, messageLength;
 
@@ -46,7 +46,7 @@ public class SettingsFragments extends PreferenceFragmentCompat{
             }
         });
 
-        return inflater.inflate(R.layout.activity_settings, container, false);
+        return inflater.inflate(R.layout.activity_settings, container, true);
     }
 }
 
