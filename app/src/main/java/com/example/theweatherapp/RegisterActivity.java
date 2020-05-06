@@ -77,7 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
                             } else {
                                 String uid = mFirebaseAuth.getCurrentUser().getUid();
                                 db.collection("users").document(uid).set(locationData);
-                                startActivity(new Intent(RegisterActivity.this, ForecastActivity.class));
+                                startActivity(new Intent(RegisterActivity.this, LocationActivity.class));
                             }
                         }
                     });

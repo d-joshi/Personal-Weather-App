@@ -16,53 +16,48 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
 import com.androdocs.httprequest.HttpRequest;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.Map;
-
 
 public class ForecastActivity extends AppCompatActivity {
-    private static String forecastDaysNum = "3";
+    //private static String forecastDaysNum = "3";
 
+    //SharedPrefences
     private SharedPreferences sharedPreferences;
 
-/*
-    private SharedPre sharedPreferenceConfig;
-*/
+    //Firebase
+    FirebaseFirestore db;
+    FirebaseUser user;
+    String uid;
+    DocumentReference userDoc;
 
-
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-    String uid = user.getUid();
-
+    //assets
     String API = "2e623cf734abdaf0dccd465fdbdd49c2";
+    String latitude = "";
+    String longitude = "";
+    String city = "mountain view";
+    String state = "";
+    String country = "";
 
     String LOC = "";
-
     String UNITS;
+    String MESSAGE_LENGTH;
 
-    Map<String, Object> locationData;
-
+    //Views
     TextView tempTxt;
     TextView highTxt;
     TextView lowTxt;
     TextView conditionTxt;
     TextView humidityTxt;
     TextView windTxt;
+    TextView personalMessageTxt;
 
-    ArrayList<ArrayList<TextView>> hourlyTxt;
+    //ArrayList<ArrayList<TextView>> hourlyTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,47 +68,25 @@ public class ForecastActivity extends AppCompatActivity {
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-/*
-        sharedPreferenceConfig = new SharedPre (getApplicationContext());
-*/
+        city = sharedPreferences.getString("city", "mountain view");
 
-        DocumentReference userDoc = db.collection("users").document(uid);
-        userDoc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        locationData = document.getData();
-                        Log.d("TAG", "DocumentSnapshot data: " + document.getData());
-                    } else {
-                        Log.d("TAG", "No such document");
-                    }
-                } else {
-                    Log.d("TAG", "get failed with ", task.getException());
+        if(!city.isEmpty()){
+            LOC += "q=" + city;
+            if(!state.isEmpty()){
+                LOC += "," + state;
+                if(!country.isEmpty()){
+                    LOC += "," + country;
                 }
             }
-        });
-
-
-        if(!getString(R.string.latitude).isEmpty() && !getString(R.string.longitude).isEmpty()){
-            LOC = "lat=" + getString(R.string.latitude) + "&lon=" +getString(R.string.longitude);
-        }else if(!getString(R.string.city).isEmpty()){
-            LOC += "q=" + getString(R.string.city);
-            if(!getString(R.string.state).isEmpty()){
-                LOC += "," + getString(R.string.state);
-                if(!getString(R.string.country).isEmpty()){
-                    LOC += "," + getString(R.string.country);
-                }
-            }
+        }else if(!latitude.isEmpty() && !longitude.isEmpty()) {
+            LOC = "lat=" + latitude + "&lon=" + longitude;
         }else{
-            startActivity(new Intent(ForecastActivity.this, LocationActivity.class));
+            Log.d("no location", "no location");
         }
 
 
         UNITS = sharedPreferences.getString("units", "metric");
-
-        //UNITS = "matric";
+        MESSAGE_LENGTH = sharedPreferences.getString("messageLength", "medium");
 
         setContentView(R.layout.activity_forecast);
 
@@ -123,8 +96,7 @@ public class ForecastActivity extends AppCompatActivity {
         conditionTxt = findViewById(R.id.condition);
         humidityTxt = findViewById(R.id.humidity);
         windTxt = findViewById(R.id.wind);
-
-
+        personalMessageTxt = findViewById(R.id.personalMessage);
 
         new WeatherTask().execute();
     }
@@ -225,6 +197,65 @@ public class ForecastActivity extends AppCompatActivity {
                 humidityTxt.setText(humidity + "% humidity");
                 windTxt.setText("wind: " + windSpeed + " "  + units[1] + " " + direction);
 
+                int length = 1;
+
+                switch (sharedPreferences.getString("messageLength", "medium")){
+                    case "short" : length = 0;
+                        break;
+                    case "medium" : length = 1;
+                        break;
+                    case "long" : length = 2;
+                }
+
+                double testTemp = Math.round(Float.parseFloat(main.getString("temp")));
+
+                if(units[0].equals("°F")){
+                    testTemp = (testTemp - 32) * 5 / 9;
+                }
+
+                String feelsLike = Float.toString(Math.round(Float.parseFloat(main.getString("feels_like")))).substring(0,2);
+
+                String clothing;
+
+                if(testTemp<5){
+                    clothing = "put on a coat";
+                }else if(testTemp<25){
+                    clothing = "dress moderately";
+                }else{
+                    clothing = "try to keep cool";
+                }
+
+                String conditionText;
+                String conditionReccomendation;
+
+                switch (condition){
+                    case "Thunderstorm" :
+                        conditionText = "stormy";
+                        conditionReccomendation = "carry an umbrella and be careful";
+                        break;
+                    case "Drizzle" :
+                    case "Rain" :
+                        conditionText = "rainy";
+                        conditionReccomendation = "carry an umbrella";
+                        break;
+                    case "Snow" :
+                        conditionText = "snowy";
+                        conditionReccomendation = "watch your step";
+                        break;
+                    case "Extreme" :
+                        conditionText = "extreme";
+                        conditionReccomendation = "be careful out there";
+                        break;
+                    default:
+                        conditionText = "normal";
+                        conditionReccomendation = "have a nice day";
+                        break;
+                }
+
+                String message = String.format(getResources().getStringArray(R.array.personal_message)[length], temp, units[0], feelsLike, clothing, conditionText, conditionReccomendation);
+
+                personalMessageTxt.setText(message);
+
             }
             catch (JSONException e) {
                 tempTxt.setText("err");
@@ -249,11 +280,7 @@ public class ForecastActivity extends AppCompatActivity {
             return true;
             }
         if(id == R.id.logout) {
-
-/*
-            sharedPreferenceConfig.login_status(false);
-*/
-             Intent intent = new Intent(ForecastActivity.this, LoginActivity.class);
+                Intent intent = new Intent(ForecastActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
                 Toast.makeText(ForecastActivity.this, "Successfully Logged out", Toast.LENGTH_SHORT).show();

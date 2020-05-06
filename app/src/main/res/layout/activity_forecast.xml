@@ -14,7 +14,7 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="50dp"
         android:textSize="50dp"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimaryDark"
         android:text="##°U"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:textSize="25dp"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimaryDark"
         android:text="high: ##°U"
         app:layout_constraintStart_toEndOf="@id/temp"
         app:layout_constraintTop_toTopOf="@id/temp"/>
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:textSize="25dp"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimaryDark"
         android:text="low: ##°U"
         app:layout_constraintStart_toEndOf="@id/temp"
         app:layout_constraintBottom_toBottomOf="@id/temp"/>
@@ -47,7 +47,7 @@
         android:layout_marginEnd="25dp"
         android:layout_marginTop="5dp"
         android:text="Somewhat Weather"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="## % humidity"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="25dp"
         app:layout_constraintStart_toStartOf="@+id/condition"
         app:layout_constraintTop_toBottomOf="@id/condition"/>
@@ -71,10 +71,24 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="wind: 000 upu DDD"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="25dp"
         app:layout_constraintStart_toStartOf="@+id/humidity"
         app:layout_constraintTop_toBottomOf="@id/humidity"/>
+
+    <TextView
+        android:id="@+id/personalMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:text="personal message"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="25dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
