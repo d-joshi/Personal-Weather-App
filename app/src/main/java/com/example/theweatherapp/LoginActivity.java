@@ -16,7 +16,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.ramotion.fluidslider.FluidSlider;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -26,7 +25,9 @@ public class LoginActivity extends AppCompatActivity {
 
     FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
-
+/*
+    private SharedPre sharedPreferenceConfig;
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +39,13 @@ public class LoginActivity extends AppCompatActivity {
         btnSignIn = findViewById(R.id.Login);
         tvSignUp = findViewById(R.id.tv_register);
 
+       /* if(sharedPreferenceConfig.read_login_status()) {
+            startActivity(new Intent (LoginActivity.this, ForecastActivity.class));
+            finish();
+        }*/
+/*
+        sharedPreferenceConfig = new SharedPre(getApplicationContext());
+*/
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -54,37 +62,35 @@ public class LoginActivity extends AppCompatActivity {
         };
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 String email = emailId.getText().toString();
-                 String pwd = password.getText().toString();
+            @Override
+            public void onClick(View v) {
+                String email = emailId.getText().toString();
+                String pwd = password.getText().toString();
 
-                 if (email.isEmpty() && pwd.isEmpty()) {
-                     Toast.makeText(LoginActivity.this, "Fields Are Empty!", Toast.LENGTH_SHORT).show();
-                 }
-                 else if (email.isEmpty()) {
-                     emailId.setError("Please enter email id");
-                 }
-                 else if (pwd.isEmpty()) {
-                     password.setError("Please enter your password");
-                 }
-                 else if(!(email.isEmpty() || pwd.isEmpty())) {
+                if (email.isEmpty() && pwd.isEmpty()) {
+                    Toast.makeText(LoginActivity.this, "Fields Are Empty!", Toast.LENGTH_SHORT).show();
+                } else if (email.isEmpty()) {
+                    emailId.setError("Please enter email id");
+                } else if (pwd.isEmpty()) {
+                    password.setError("Please enter your password");
+                } else if (!(email.isEmpty() || pwd.isEmpty())) {
                     mFirebaseAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                     @Override
-                     public void onComplete(@NonNull Task<AuthResult> task) {
-                         if (!task.isSuccessful()) {
-                             Toast.makeText(LoginActivity.this, "Login error. Try again with the correct email/password.", Toast.LENGTH_SHORT).show();
-                         } else {
-                             Intent intToHome = new Intent(LoginActivity.this, ForecastActivity.class);
-                             startActivity(intToHome);
-                             Toast.makeText(LoginActivity.this, "Logged in", Toast.LENGTH_SHORT).show();
-
-                         }
-                     }
-                     });
-                 }
-             }
-         });
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (!task.isSuccessful()) {
+                                Toast.makeText(LoginActivity.this, "Login error. Try again with the correct email/password.", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Intent intToHome = new Intent(LoginActivity.this, ForecastActivity.class);
+                                startActivity(intToHome);
+                                Toast.makeText(LoginActivity.this, "Logged in", Toast.LENGTH_SHORT).show();
+                               /* sharedPreferenceConfig.login_status(true);
+                                finish();*/
+                            }
+                        }
+                    });
+                }
+            }
+        });
 
         tvSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intSignUp);
             }
         });
+
     }
 
     @Override
