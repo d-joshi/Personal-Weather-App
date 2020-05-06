@@ -36,6 +36,11 @@ public class ForecastActivity extends AppCompatActivity {
 
     private SharedPreferences sharedPreferences;
 
+/*
+    private SharedPre sharedPreferenceConfig;
+*/
+
+
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -67,6 +72,10 @@ public class ForecastActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+/*
+        sharedPreferenceConfig = new SharedPre (getApplicationContext());
+*/
 
         DocumentReference userDoc = db.collection("users").document(uid);
         userDoc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -240,7 +249,11 @@ public class ForecastActivity extends AppCompatActivity {
             return true;
             }
         if(id == R.id.logout) {
-                Intent intent = new Intent(ForecastActivity.this, LoginActivity.class);
+
+/*
+            sharedPreferenceConfig.login_status(false);
+*/
+             Intent intent = new Intent(ForecastActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
                 Toast.makeText(ForecastActivity.this, "Successfully Logged out", Toast.LENGTH_SHORT).show();

@@ -7,16 +7,10 @@
         android:dialogTitle="@string/app_name"
         android:icon="@drawable/ic_cloud_circle_black_24dp"/>
 
-    <CheckBoxPreference
-        android:key="loggedIn"
-        android:title="Keep me logged in"
-        android:dialogTitle="@string/pref_logged_in"
-        android:defaultValue="false"/>
-
     <ListPreference
         android:key="units"
         android:title="Units"
-        android:summary="Please choose metric or imperial"
+        android:summary="Choose metric or imperial"
         android:entries="@array/units"
         android:entryValues="@array/unitsData"
         android:defaultValue="metric" />

@@ -39,6 +39,7 @@ public class LocationActivity extends AppCompatActivity {
 
 
     Button back;
+    Button save;
     Button currlocation;
     TextView textView1, textView2, textView3, textView4, textView5;
     FusedLocationProviderClient fusedLocationProviderClient;
@@ -67,6 +68,7 @@ public class LocationActivity extends AppCompatActivity {
         textView4 = findViewById(R.id.text_view4);
         textView5 = findViewById(R.id.text_view5);
         back = findViewById(R.id.back);
+        save = findViewById(R.id.save);
 
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -89,6 +91,16 @@ public class LocationActivity extends AppCompatActivity {
                 Intent intent = new Intent(LocationActivity.this, ForecastActivity.class);
                 startActivity(intent);
                 Toast.makeText(LocationActivity.this, "Back to Forecast", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LocationActivity.this, ForecastActivity.class);
+                startActivity(intent);
+                Toast.makeText(LocationActivity.this, "Data is saved", Toast.LENGTH_SHORT).show();
 
             }
         });
