@@ -16,37 +16,39 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
 import com.androdocs.httprequest.HttpRequest;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 
 public class ForecastActivity extends AppCompatActivity {
     private static String forecastDaysNum = "3";
 
-
-/*
-            SharedPreferences sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
-*/
-
     private SharedPreferences sharedPreferences;
 
-//    FirebaseFirestore db = FirebaseFirestore.getInstance();
-//    CollectionReference users = db.collection("users");
-//    String userID = "qxGBkwWEGNEjTKM0fgp1";
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-//    FirebaseFirestore db = FirebaseFirestore.getInstance();
-//    CollectionReference users = db.collection("users");
-//    String userID = "qxGBkwWEGNEjTKM0fgp1";
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+    String uid = user.getUid();
 
     String API = "2e623cf734abdaf0dccd465fdbdd49c2";
 
     String LOC = "";
 
     String UNITS;
+
+    Map<String, Object> locationData;
 
     TextView tempTxt;
     TextView highTxt;
@@ -66,9 +68,23 @@ public class ForecastActivity extends AppCompatActivity {
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-//        DocumentReference user = db.collection("users").document(userID);
-//        String latitude = user.
-        //String latitude = users.document(userID)
+        DocumentReference userDoc = db.collection("users").document(uid);
+        userDoc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        locationData = document.getData();
+                        Log.d("TAG", "DocumentSnapshot data: " + document.getData());
+                    } else {
+                        Log.d("TAG", "No such document");
+                    }
+                } else {
+                    Log.d("TAG", "get failed with ", task.getException());
+                }
+            }
+        });
 
 
         if(!getString(R.string.latitude).isEmpty() && !getString(R.string.longitude).isEmpty()){
@@ -82,7 +98,7 @@ public class ForecastActivity extends AppCompatActivity {
                 }
             }
         }else{
-            LOC = getString(R.string.cityCode);
+            startActivity(new Intent(ForecastActivity.this, LocationActivity.class));
         }
 
 

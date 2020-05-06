@@ -8,6 +8,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,11 +20,9 @@ import androidx.core.app.ActivityCompat;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.IOException;
@@ -82,6 +81,7 @@ public class LocationActivity extends AppCompatActivity {
                 }
             }
         });
+<<<<<<< HEAD
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,6 +104,9 @@ public class LocationActivity extends AppCompatActivity {
                     }
                 });
     }*/
+=======
+
+>>>>>>> d9c58558d5ee0954aa91a52dac0f0a2cc505ac71
     }
         private void getLocation() {
             fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
@@ -116,18 +119,23 @@ public class LocationActivity extends AppCompatActivity {
                             Geocoder geocoder = new Geocoder(LocationActivity.this, Locale.getDefault());
                             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
 
+                            String latitude = Double.toString(addresses.get(0).getLatitude());
+                            String longitude = Double.toString(addresses.get(0).getLongitude());
+                            String country = addresses.get(0).getCountryName();
+                            String locality = addresses.get(0).getLocality();
+                            String city = addresses.get(0).getAddressLine(0);
+
                             Map<String, String> locationData = new HashMap<String, String>();
 
-                            locationData.put(LAT_KEY, Double.toString(addresses.get(0).getLatitude()));
-                            locationData.put(LON_KEY, Double.toString(addresses.get(0).getLongitude()));
-                            locationData.put(COUNTRY_KEY, addresses.get(0).getCountryName());
-                            locationData.put(LOCALITY_KET, addresses.get(0).getLocality());
-                            locationData.put(CITY_KEY, addresses.get(0).getAddressLine(0));
+                            locationData.put(LAT_KEY, latitude);
+                            locationData.put(LON_KEY, longitude);
+                            locationData.put(COUNTRY_KEY, country);
+                            locationData.put(LOCALITY_KET, locality);
+                            locationData.put(CITY_KEY, city);
 
-
-/*
-                            db.collection("users" + user.getUid()).add(locationData);
-*/
+                            String uid = user.getUid();
+                            Log.d("uid", uid);
+                            db.collection("users").document(uid).set(locationData);
 
                             textView1.setText(Html.fromHtml("<font color ='#6200EE'><b>Latitude :</b><br></font>" + addresses.get(0).getLatitude())); //get latitude
                             textView2.setText(Html.fromHtml("<font color ='#6200EE'><b>Longitude :</b><br></font>" + addresses.get(0).getLongitude())); //get longitude

@@ -16,25 +16,42 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.auth.User;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
     EditText emailId, password;
     Button btnSignup;
     TextView tvSignIn;
     FirebaseAuth mFirebaseAuth;
+    FirebaseFirestore db;
 
+    public static final String LAT_KEY = "latitude";
+    public static final String LON_KEY = "longitude";
+    public static final String COUNTRY_KEY = "country";
+    public static final String LOCALITY_KET = "locality";
+    public static final String CITY_KEY = "city";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        final Map<String, String> locationData = new HashMap<String, String>();
+
+        locationData.put(LAT_KEY, "");
+        locationData.put(LON_KEY, "");
+        locationData.put(COUNTRY_KEY,"");
+        locationData.put(LOCALITY_KET, "");
+        locationData.put(CITY_KEY, "");
+
 
         emailId = findViewById(R.id.enter_email);
         password = findViewById(R.id.enter_password);
         tvSignIn = findViewById(R.id.tv_login);
         mFirebaseAuth = FirebaseAuth.getInstance();
-        //db = FirebaseFirestore.getInstance();
+        db = FirebaseFirestore.getInstance();
         btnSignup = findViewById(R.id.registerbutton);
 
         btnSignup.setOnClickListener(new View.OnClickListener() {
@@ -59,9 +76,8 @@ public class RegisterActivity extends AppCompatActivity {
                             if (!task.isSuccessful()) {
                                 Toast.makeText(RegisterActivity.this, "SignUp Unsuccessful, Please Try Again", Toast.LENGTH_SHORT).show();
                             } else {
-
-                                //db.collection("users").add(mFirebaseAuth.getCurrentUser().getUid());
-
+                                String uid = mFirebaseAuth.getCurrentUser().getUid();
+                                db.collection("users").document(uid).set(locationData);
                                 startActivity(new Intent(RegisterActivity.this, ForecastActivity.class));
                             }
                         }
