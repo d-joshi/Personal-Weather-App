@@ -40,9 +40,9 @@ public class ForecastActivity extends AppCompatActivity {
     String API = "2e623cf734abdaf0dccd465fdbdd49c2";
     String latitude = "";
     String longitude = "";
-    String city = "philadelphia";
-    String state = "pa";
-    String country = "us";
+    String city = "mountain view";
+    String state = "";
+    String country = "";
 
     String LOC = "";
     String UNITS;
@@ -67,6 +67,8 @@ public class ForecastActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        city = sharedPreferences.getString("city", "mountain view");
 
         if(!city.isEmpty()){
             LOC += "q=" + city;

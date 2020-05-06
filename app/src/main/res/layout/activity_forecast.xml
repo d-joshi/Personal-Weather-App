@@ -78,17 +78,17 @@
 
     <TextView
         android:id="@+id/personalMessage"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="20dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:text="personal message"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="20dp"/>
+        android:textSize="25dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

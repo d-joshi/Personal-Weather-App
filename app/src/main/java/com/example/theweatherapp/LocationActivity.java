@@ -2,6 +2,7 @@ package com.example.theweatherapp;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.preference.PreferenceManager;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -38,6 +40,7 @@ public class LocationActivity extends AppCompatActivity {
     private static String forecastDaysNum = "3";
     String city = "Philadelphia, PA";
 
+    SharedPreferences sharedPreferences;
 
     Button back;
     Button currlocation;
@@ -126,6 +129,13 @@ public class LocationActivity extends AppCompatActivity {
                             String locality = addresses.get(0).getAdminArea().toLowerCase();
                             String city = addresses.get(0).getLocality().toLowerCase();
 
+                            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(LocationActivity.this);
+
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                            editor.putString("city", city.toLowerCase());
+                            editor.commit();
+
                             Map<String, String> locationData = new HashMap<String, String>();
                             locationData.put(LAT_KEY, latitude);
                             locationData.put(LON_KEY, longitude);
@@ -149,39 +159,46 @@ public class LocationActivity extends AppCompatActivity {
                     }
                 }
             });
-    }
+        }
 
     private void getLocationFromText(String location){
-        try{
-            Geocoder geocoder = new Geocoder(LocationActivity.this, Locale.getDefault());
-            List<Address> addresses = geocoder.getFromLocationName(location, 1);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-            String latitude = Double.toString(addresses.get(0).getLatitude());
-            String longitude = Double.toString(addresses.get(0).getLongitude());
-            String country = addresses.get(0).getCountryCode().toLowerCase();
-            String locality = addresses.get(0).getAdminArea().toLowerCase();
-            String city = addresses.get(0).getLocality().toLowerCase();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
 
-            Map<String, String> locationData = new HashMap<String, String>();
-            locationData.put(LAT_KEY, latitude);
-            locationData.put(LON_KEY, longitude);
-            locationData.put(COUNTRY_KEY, country);
-            locationData.put(LOCALITY_KET, locality);
-            locationData.put(CITY_KEY, city);
+        editor.putString("city", location.toLowerCase());
+        editor.commit();
 
-            String uid = user.getUid();
-            Log.d("uid", uid);
-            db.collection("users").document(uid).set(locationData);
-
-            textView1.setText(Html.fromHtml("<font color ='#6200EE'><b>Latitude :</b><br></font>" + addresses.get(0).getLatitude())); //get latitude
-            textView2.setText(Html.fromHtml("<font color ='#6200EE'><b>Longitude :</b><br></font>" + addresses.get(0).getLongitude())); //get longitude
-            textView3.setText(Html.fromHtml("<font color ='#6200EE'><b>Country Name :</b><br></font>" + addresses.get(0).getCountryName())); //get country name
-            textView4.setText(Html.fromHtml("<font color ='#6200EE'><b>Locality :</b><br></font>" + addresses.get(0).getLocality())); //get Locality
-            textView5.setText(Html.fromHtml("<font color ='#6200EE'><b>Address :</b><br></font>" + addresses.get(0).getAddressLine(0))); //get Locality
-
-        }catch(Exception e){
-            Toast.makeText(LocationActivity.this, "Enter a valid location", Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-        }
+//        try{
+//            Geocoder geocoder = new Geocoder(LocationActivity.this, Locale.getDefault());
+//            List<Address> addresses = geocoder.getFromLocationName(location, 1);
+//
+//            String latitude = Double.toString(addresses.get(0).getLatitude());
+//            String longitude = Double.toString(addresses.get(0).getLongitude());
+//            String country = addresses.get(0).getCountryCode().toLowerCase();
+//            String locality = addresses.get(0).getAdminArea().toLowerCase();
+//            String city = addresses.get(0).getLocality().toLowerCase();
+//
+//            Map<String, String> locationData = new HashMap<String, String>();
+//            locationData.put(LAT_KEY, latitude);
+//            locationData.put(LON_KEY, longitude);
+//            locationData.put(COUNTRY_KEY, country);
+//            locationData.put(LOCALITY_KET, locality);
+//            locationData.put(CITY_KEY, city);
+//
+//            String uid = user.getUid();
+//            Log.d("uid", uid);
+//            db.collection("users").document(uid).set(locationData);
+//
+//            textView1.setText(Html.fromHtml("<font color ='#6200EE'><b>Latitude :</b><br></font>" + addresses.get(0).getLatitude())); //get latitude
+//            textView2.setText(Html.fromHtml("<font color ='#6200EE'><b>Longitude :</b><br></font>" + addresses.get(0).getLongitude())); //get longitude
+//            textView3.setText(Html.fromHtml("<font color ='#6200EE'><b>Country Name :</b><br></font>" + addresses.get(0).getCountryName())); //get country name
+//            textView4.setText(Html.fromHtml("<font color ='#6200EE'><b>Locality :</b><br></font>" + addresses.get(0).getLocality())); //get Locality
+//            textView5.setText(Html.fromHtml("<font color ='#6200EE'><b>Address :</b><br></font>" + addresses.get(0).getAddressLine(0))); //get Locality
+//
+//        }catch(Exception e){
+//            Toast.makeText(LocationActivity.this, "Enter a valid location", Toast.LENGTH_SHORT).show();
+//            e.printStackTrace();
+//        }
     }
 }
