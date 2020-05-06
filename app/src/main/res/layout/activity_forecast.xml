@@ -76,5 +76,19 @@
         app:layout_constraintStart_toStartOf="@+id/humidity"
         app:layout_constraintTop_toBottomOf="@id/humidity"/>
 
+    <TextView
+        android:id="@+id/personalMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="personal message"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20dp"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,6 +25,12 @@
         <item>long</item>
     </string-array>
 
+    <string-array name="personal_message">
+        <item name="short">It is %1$s %2$s outside and %5$s.</item>
+        <item name="medium">Hello! Today it will be %1$s %2$s so %4$s. The weather looks %5$s.</item>
+        <item name ="long">Hello.! Today it will be %1$s %2$s, but feel like %3$s. You should %4$s. It will also be %5$s, so %6$s</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
