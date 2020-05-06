@@ -82,7 +82,7 @@ public class ForecastActivity extends AppCompatActivity {
                 }
             }
         }else{
-            LOC = getString(R.string.cityCode);
+            startActivity(new Intent(ForecastActivity.this, LocationActivity.class));
         }
 
 
