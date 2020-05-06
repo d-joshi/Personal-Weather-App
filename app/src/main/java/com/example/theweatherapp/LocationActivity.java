@@ -11,6 +11,7 @@ import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,7 +41,9 @@ public class LocationActivity extends AppCompatActivity {
 
     Button back;
     Button currlocation;
+    Button save;
     TextView textView1, textView2, textView3, textView4, textView5;
+    EditText enterLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -59,14 +62,15 @@ public class LocationActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-
         currlocation = findViewById(R.id.currentlocation);
         textView1 = findViewById(R.id.text_view1);
         textView2 = findViewById(R.id.text_view2);
         textView3 = findViewById(R.id.text_view3);
         textView4 = findViewById(R.id.text_view4);
         textView5 = findViewById(R.id.text_view5);
+        enterLocation = findViewById(R.id.enter_location);
         back = findViewById(R.id.back);
+        save = findViewById(R.id.save);
 
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -83,6 +87,17 @@ public class LocationActivity extends AppCompatActivity {
             }
         });
 
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(enterLocation.getText().toString().isEmpty()){
+                    Toast.makeText(LocationActivity.this, "Enter a location", Toast.LENGTH_SHORT).show();
+                }else{
+                    getLocationFromText(enterLocation.getText().toString());
+                }
+            }
+        });
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,21 +107,6 @@ public class LocationActivity extends AppCompatActivity {
 
             }
         });
-        // Create a new user with a first and last nam
-//        Map<String, Object> user = new HashMap<>();
-//        user.put("first", "Ada");
-//        user.put("last", "Lovelace");
-//        user.put("born", 1815);
-
-        // Add a new document with a generated ID
-      /*  db.collection("users")
-                .add(user)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                    }
-                });
-    }*/
 
     }
         private void getLocation() {
@@ -119,15 +119,14 @@ public class LocationActivity extends AppCompatActivity {
                         try {
                             Geocoder geocoder = new Geocoder(LocationActivity.this, Locale.getDefault());
                             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-                            String name = user.getUid();
+
                             String latitude = Double.toString(addresses.get(0).getLatitude());
                             String longitude = Double.toString(addresses.get(0).getLongitude());
-                            String country = addresses.get(0).getCountryName();
-                            String locality = addresses.get(0).getLocality();
-                            String city = addresses.get(0).getAddressLine(0);
+                            String country = addresses.get(0).getCountryCode().toLowerCase();
+                            String locality = addresses.get(0).getAdminArea().toLowerCase();
+                            String city = addresses.get(0).getLocality().toLowerCase();
 
                             Map<String, String> locationData = new HashMap<String, String>();
-                            locationData.put(LAT_KEY, name);
                             locationData.put(LAT_KEY, latitude);
                             locationData.put(LON_KEY, longitude);
                             locationData.put(COUNTRY_KEY, country);
@@ -150,5 +149,39 @@ public class LocationActivity extends AppCompatActivity {
                     }
                 }
             });
+    }
+
+    private void getLocationFromText(String location){
+        try{
+            Geocoder geocoder = new Geocoder(LocationActivity.this, Locale.getDefault());
+            List<Address> addresses = geocoder.getFromLocationName(location, 1);
+
+            String latitude = Double.toString(addresses.get(0).getLatitude());
+            String longitude = Double.toString(addresses.get(0).getLongitude());
+            String country = addresses.get(0).getCountryCode().toLowerCase();
+            String locality = addresses.get(0).getAdminArea().toLowerCase();
+            String city = addresses.get(0).getLocality().toLowerCase();
+
+            Map<String, String> locationData = new HashMap<String, String>();
+            locationData.put(LAT_KEY, latitude);
+            locationData.put(LON_KEY, longitude);
+            locationData.put(COUNTRY_KEY, country);
+            locationData.put(LOCALITY_KET, locality);
+            locationData.put(CITY_KEY, city);
+
+            String uid = user.getUid();
+            Log.d("uid", uid);
+            db.collection("users").document(uid).set(locationData);
+
+            textView1.setText(Html.fromHtml("<font color ='#6200EE'><b>Latitude :</b><br></font>" + addresses.get(0).getLatitude())); //get latitude
+            textView2.setText(Html.fromHtml("<font color ='#6200EE'><b>Longitude :</b><br></font>" + addresses.get(0).getLongitude())); //get longitude
+            textView3.setText(Html.fromHtml("<font color ='#6200EE'><b>Country Name :</b><br></font>" + addresses.get(0).getCountryName())); //get country name
+            textView4.setText(Html.fromHtml("<font color ='#6200EE'><b>Locality :</b><br></font>" + addresses.get(0).getLocality())); //get Locality
+            textView5.setText(Html.fromHtml("<font color ='#6200EE'><b>Address :</b><br></font>" + addresses.get(0).getAddressLine(0))); //get Locality
+
+        }catch(Exception e){
+            Toast.makeText(LocationActivity.this, "Enter a valid location", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
     }
 }
