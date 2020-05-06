@@ -140,9 +140,9 @@ public class ForecastActivity extends AppCompatActivity {
                 }
 
                 //get temperature
-                String temp = Float.toString(Math.round(Float.parseFloat(main.getString("temp")))).substring(0,2);
-                String high = Float.toString(Math.round(Float.parseFloat(main.getString("temp_max")))).substring(0,2);
-                String low = Float.toString(Math.round(Float.parseFloat(main.getString("temp_min")))).substring(0,2);
+                String temp = Integer.toString((int)Math.round(Float.parseFloat(main.getString("temp"))));
+                String high = Integer.toString((int)Math.round(Float.parseFloat(main.getString("temp_max"))));
+                String low = Integer.toString((int)Math.round(Float.parseFloat(main.getString("temp_min"))));
 
                 //get weather condition
                 String condition = weather.getString("description");
@@ -213,7 +213,7 @@ public class ForecastActivity extends AppCompatActivity {
                     testTemp = (testTemp - 32) * 5 / 9;
                 }
 
-                String feelsLike = Float.toString(Math.round(Float.parseFloat(main.getString("feels_like")))).substring(0,2);
+                String feelsLike = Integer.toString((int)Math.round(Float.parseFloat(main.getString("feels_like"))));
 
                 String clothing;
 

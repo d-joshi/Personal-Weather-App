@@ -71,7 +71,7 @@ public class LocationActivity extends AppCompatActivity {
         textView3 = findViewById(R.id.text_view3);
         textView4 = findViewById(R.id.text_view4);
         textView5 = findViewById(R.id.text_view5);
-        enterLocation = findViewById(R.id.enter_location);
+        enterLocation = findViewById(R.id.enterLocation);
         back = findViewById(R.id.back);
         save = findViewById(R.id.save);
 
@@ -162,8 +162,7 @@ public class LocationActivity extends AppCompatActivity {
         }
 
     private void getLocationFromText(String location){
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(LocationActivity.this);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putString("city", location.toLowerCase());
