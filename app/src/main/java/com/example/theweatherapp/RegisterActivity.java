@@ -49,7 +49,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         emailId = findViewById(R.id.enter_email);
         password = findViewById(R.id.enter_password);
-        tvSignIn = findViewById(R.id.tv_login);
         mFirebaseAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         btnSignup = findViewById(R.id.registerbutton);
@@ -82,16 +81,7 @@ public class RegisterActivity extends AppCompatActivity {
                             }
                         }
                     });
-
                 }
-
-                tvSignIn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intSignUp = new Intent(RegisterActivity.this, LoginActivity.class);
-                        startActivity(intSignUp);
-                    }
-                });
             }
         });
     }

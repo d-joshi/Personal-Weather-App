@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -81,15 +82,17 @@ public class LocationActivity extends AppCompatActivity {
                 }
             }
         });
-<<<<<<< HEAD
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LocationActivity.this, ForecastActivity.class);
                 startActivity(intent);
+                Toast.makeText(LocationActivity.this, "Back to Forecast", Toast.LENGTH_SHORT).show();
+
             }
         });
-        // Create a new user with a first and last name
+        // Create a new user with a first and last nam
 //        Map<String, Object> user = new HashMap<>();
 //        user.put("first", "Ada");
 //        user.put("last", "Lovelace");
@@ -104,9 +107,7 @@ public class LocationActivity extends AppCompatActivity {
                     }
                 });
     }*/
-=======
 
->>>>>>> d9c58558d5ee0954aa91a52dac0f0a2cc505ac71
     }
         private void getLocation() {
             fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
@@ -118,7 +119,7 @@ public class LocationActivity extends AppCompatActivity {
                         try {
                             Geocoder geocoder = new Geocoder(LocationActivity.this, Locale.getDefault());
                             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-
+                            String name = user.getUid();
                             String latitude = Double.toString(addresses.get(0).getLatitude());
                             String longitude = Double.toString(addresses.get(0).getLongitude());
                             String country = addresses.get(0).getCountryName();
@@ -126,7 +127,7 @@ public class LocationActivity extends AppCompatActivity {
                             String city = addresses.get(0).getAddressLine(0);
 
                             Map<String, String> locationData = new HashMap<String, String>();
-
+                            locationData.put(LAT_KEY, name);
                             locationData.put(LAT_KEY, latitude);
                             locationData.put(LON_KEY, longitude);
                             locationData.put(COUNTRY_KEY, country);

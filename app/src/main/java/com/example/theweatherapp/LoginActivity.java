@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.ramotion.fluidslider.FluidSlider;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -76,6 +77,8 @@ public class LoginActivity extends AppCompatActivity {
                          } else {
                              Intent intToHome = new Intent(LoginActivity.this, ForecastActivity.class);
                              startActivity(intToHome);
+                             Toast.makeText(LoginActivity.this, "Logged in", Toast.LENGTH_SHORT).show();
+
                          }
                      }
                      });

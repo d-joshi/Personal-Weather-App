@@ -7,58 +7,62 @@
     android:background="@drawable/bg_gradient"
     android:paddingTop="20dp">
 
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="120dp"
-        android:fontFamily="sans-serif-black"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="38dp"
+        android:fontFamily="sans-serif-medium"
+        android:textStyle="bold"
         android:text="Sign In"
-        android:textSize="30sp"/>
-
+        android:textSize="30sp" />
 
     <EditText
         android:id="@+id/Email_Address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="299dp"
+        android:layout_height="60dp"
         android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="18dp"
         android:ems="10"
         android:hint="Email Address"
-        android:inputType="textEmailAddress"/>
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/Password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:layout_below="@+id/Email_Address"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="18dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="none|textPassword"
-        android:paddingTop="20dp"/>
+        android:paddingTop="20dp" />
 
     <Button
         android:id="@+id/Login"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
+        android:layout_width="103dp"
+        android:layout_height="60dp"
         android:layout_below="@+id/Password"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:textStyle="bold"
-        android:text="Login"/>
+        android:layout_marginTop="18dp"
+        android:text="Login"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tv_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/Login"
+        android:textSize="15sp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30sp"
         android:text="Don't have an account? Click here."/>
 
 </RelativeLayout>
