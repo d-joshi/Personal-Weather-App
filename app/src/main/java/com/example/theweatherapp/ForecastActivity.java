@@ -1,6 +1,5 @@
 package com.example.theweatherapp;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -17,8 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
 import com.androdocs.httprequest.HttpRequest;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,12 +31,11 @@ public class ForecastActivity extends AppCompatActivity {
             SharedPreferences sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
 */
 
+    private SharedPreferences sharedPreferences;
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    CollectionReference users = db.collection("users");
-    String userID = "qxGBkwWEGNEjTKM0fgp1";
-
-    //SharedPreferences sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
+//    FirebaseFirestore db = FirebaseFirestore.getInstance();
+//    CollectionReference users = db.collection("users");
+//    String userID = "qxGBkwWEGNEjTKM0fgp1";
 
 //    FirebaseFirestore db = FirebaseFirestore.getInstance();
 //    CollectionReference users = db.collection("users");
@@ -67,11 +63,13 @@ public class ForecastActivity extends AppCompatActivity {
         setContentView(R.layout.activity_forecast);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
 //        DocumentReference user = db.collection("users").document(userID);
 //        String latitude = user.
         //String latitude = users.document(userID)
 
-        PreferenceManager.setDefaultValues(this,R.xml.preferences, false );
 
         if(!getString(R.string.latitude).isEmpty() && !getString(R.string.longitude).isEmpty()){
             LOC = "lat=" + getString(R.string.latitude) + "&lon=" +getString(R.string.longitude);
@@ -87,13 +85,10 @@ public class ForecastActivity extends AppCompatActivity {
             LOC = getString(R.string.cityCode);
         }
 
-/*
+
         UNITS = sharedPreferences.getString("units", "metric");
-*/
 
-        UNITS = "metric";
-
-
+        //UNITS = "matric";
 
         setContentView(R.layout.activity_forecast);
 
