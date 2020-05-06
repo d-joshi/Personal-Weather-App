@@ -15,8 +15,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"
         android:fontFamily="sans-serif-black"
-        android:text="@string/common_signin_button_text"
-        android:textSize="20sp"/>
+        android:text="Sign In"
+        android:textSize="30sp"/>
 
 
     <EditText
@@ -49,6 +49,7 @@
         android:layout_below="@+id/Password"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
+        android:textStyle="bold"
         android:text="Login"/>
 
     <TextView

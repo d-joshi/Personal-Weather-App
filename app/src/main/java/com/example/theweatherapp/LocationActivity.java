@@ -1,6 +1,7 @@
 package com.example.theweatherapp;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -65,6 +66,7 @@ public class LocationActivity extends AppCompatActivity {
         textView3 = findViewById(R.id.text_view3);
         textView4 = findViewById(R.id.text_view4);
         textView5 = findViewById(R.id.text_view5);
+        back = findViewById(R.id.back);
 
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -78,6 +80,13 @@ public class LocationActivity extends AppCompatActivity {
                 } else {
                     ActivityCompat.requestPermissions(LocationActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
                 }
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LocationActivity.this, ForecastActivity.class);
+                startActivity(intent);
             }
         });
         // Create a new user with a first and last name

@@ -14,56 +14,48 @@
         android:id="@+id/enterLocation"
         android:layout_width="260dp"
         android:layout_height="60dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="276dp"
-        android:ems="10"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="54dp"
         android:hint="Enter Location" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="129dp"
-        android:layout_height="81dp"
-
-        android:layout_below="@+id/currentlocation"
+        android:id="@+id/back"
+        android:layout_width="114dp"
+        android:layout_height="62dp"
+        android:layout_above="@+id/enterLocation"
         android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginBottom="141dp"
-        android:layout_toStartOf="@+id/button3"
-        android:text="Back" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="109dp"
-        android:layout_height="80dp"
-
-        android:layout_below="@+id/currentlocation"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="85dp"
-        android:layout_marginBottom="142dp"
-        android:text="Save" />
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="272dp"
+        android:layout_marginBottom="-37dp"
+        android:background="@android:color/transparent"
+        android:text="Back"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="198dp"
+        android:textStyle="bold"
         android:layout_height="34dp"
-
         android:layout_below="@+id/enterLocation"
         android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="58dp"
         android:layout_marginTop="0dp"
+
         android:text="Enter the city or state above" />
 
     <Button
         android:id="@+id/currentlocation"
         android:layout_width="213dp"
+        android:textStyle="bold"
         android:layout_height="54dp"
+        android:background="@android:color/secondary_text_dark"
         android:layout_below="@+id/textView"
         android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
@@ -76,17 +68,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="300dp">
 
         <TextView
             android:id="@+id/text_view1"
             android:layout_width="0dp"
+            android:textSize="20dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
         <TextView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_height="wrap_content"
         android:layout_weight="1"
         android:id="@+id/text_view2"/>
 
@@ -97,11 +91,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="5dp">
+        android:layout_marginTop="420dp">
 
         <TextView
             android:id="@+id/text_view3"
             android:layout_width="0dp"
+            android:textSize="20dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
@@ -109,6 +104,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="20dp"
             android:id="@+id/text_view4"/>
 
     </LinearLayout>
@@ -117,8 +113,10 @@
         android:id="@+id/text_view5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/currentlocation"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp" />
+        android:layout_marginBottom="-351dp"
+        android:textSize="20dp" />
 
 
 </RelativeLayout>
