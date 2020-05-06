@@ -97,6 +97,9 @@ public class LocationActivity extends AppCompatActivity {
                     Toast.makeText(LocationActivity.this, "Enter a location", Toast.LENGTH_SHORT).show();
                 }else{
                     getLocationFromText(enterLocation.getText().toString());
+                    Intent intent = new Intent(LocationActivity.this, ForecastActivity.class);
+                    startActivity(intent);
+                    Toast.makeText(LocationActivity.this, "Data saved", Toast.LENGTH_SHORT).show();
                 }
             }
         });
