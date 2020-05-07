@@ -19,7 +19,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity"/>
-        <activity android:name="fluidslider"/>
         <activity android:name=".SettingsActivity"
             android:label="Settings"
             android:parentActivityName=".ForecastActivity">
